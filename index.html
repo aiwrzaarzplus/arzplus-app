@@ -2,401 +2,736 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#102A43">
-<title>ارز پلاس | پنل مدیریت</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ارز پلاس | ArzPlusMarket</title>
 
 <style>
-*{box-sizing:border-box}
+
+*{
+  box-sizing:border-box;
+  font-family:Tahoma,Arial,sans-serif;
+}
+
 body{
   margin:0;
-  font-family:Tahoma,Arial,sans-serif;
   background:#eef5f8;
-  color:#102a43
+  color:#102a43;
 }
-button,input,select,textarea{font-family:inherit}
-button{cursor:pointer}
-.hidden{display:none!important}
 
-/* LOGIN */
-#login{
+button,input,select,textarea{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.hidden{
+  display:none!important;
+}
+
+
+/* =========================
+   HOME
+========================= */
+
+.home{
   min-height:100vh;
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   padding:20px;
-  background:linear-gradient(135deg,#dceaf2,#f8f1df)
+  background:linear-gradient(135deg,#dceaf2,#f8f1df);
 }
-.login-box{
+
+.home-box{
   width:100%;
-  max-width:410px;
-  background:white;
-  border-radius:24px;
-  padding:30px 24px;
-  box-shadow:0 15px 45px rgba(16,42,67,.15)
-}
-.logo{
+  max-width:430px;
   text-align:center;
-  margin-bottom:25px
 }
+
+.logo{
+  margin-bottom:35px;
+}
+
 .logo h1{
   margin:0;
+  font-size:38px;
   color:#c9a227;
-  font-size:32px
 }
-.logo span{
+
+.logo p{
+  margin:8px 0 0;
+  font-size:14px;
   color:#102a43;
-  font-size:14px
 }
+
+.home-subtitle{
+  font-size:15px;
+  margin-bottom:25px;
+  color:#52697a;
+}
+
+.home-card{
+  background:white;
+  border-radius:24px;
+  padding:25px;
+  box-shadow:0 15px 45px rgba(16,42,67,.15);
+}
+
+.home-button{
+  width:100%;
+  border:0;
+  border-radius:15px;
+  padding:18px;
+  margin:7px 0;
+  font-size:16px;
+  font-weight:bold;
+}
+
+.program-button{
+  background:#102a43;
+  color:white;
+}
+
+.panel-button{
+  background:#c9a227;
+  color:white;
+}
+
+.home-footer{
+  margin-top:20px;
+  font-size:11px;
+  color:#708391;
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+.login{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:linear-gradient(135deg,#dceaf2,#f8f1df);
+}
+
+.login-box{
+  width:100%;
+  max-width:400px;
+  background:white;
+  padding:30px 24px;
+  border-radius:24px;
+  box-shadow:0 15px 40px rgba(16,42,67,.15);
+}
+
 .login-box h2{
   text-align:center;
-  font-size:20px
+  margin-top:0;
 }
+
 .input{
   width:100%;
-  border:1px solid #d7e0e6;
-  border-radius:12px;
   padding:14px;
   margin:7px 0;
+  border:1px solid #d5dfe5;
+  border-radius:12px;
   font-size:15px;
-  outline:none
+  outline:none;
 }
-.input:focus{border-color:#c9a227}
-.primary{
+
+.input:focus{
+  border-color:#c9a227;
+}
+
+.login-button{
   width:100%;
   border:0;
   border-radius:12px;
   padding:14px;
+  margin-top:10px;
   background:#102a43;
   color:white;
   font-size:16px;
-  margin-top:10px
-}
-.login-error{
-  color:#b42318;
-  text-align:center;
-  margin-top:12px;
-  font-size:13px
 }
 
-/* APP */
-#app{min-height:100vh}
+.back-button{
+  width:100%;
+  border:0;
+  background:#edf3f6;
+  color:#102a43;
+  border-radius:12px;
+  padding:12px;
+  margin-top:10px;
+}
+
+.error{
+  color:#b42318;
+  text-align:center;
+  font-size:13px;
+  margin-top:12px;
+}
+
+
+/* =========================
+   APP
+========================= */
+
+.app{
+  min-height:100vh;
+}
+
 .topbar{
+  position:sticky;
+  top:0;
+  z-index:20;
   background:#102a43;
   color:white;
   padding:14px 18px;
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  position:sticky;
-  top:0;
-  z-index:20
+  align-items:center;
 }
-.top-title{
+
+.brand{
+  font-size:18px;
   font-weight:bold;
-  font-size:18px
 }
-.top-title small{
+
+.brand small{
   display:block;
   font-size:10px;
+  margin-top:3px;
   color:#dceaf2;
-  margin-top:3px
 }
-.user{
+
+.user-area{
+  text-align:left;
   font-size:12px;
-  text-align:left
 }
+
+.logout{
+  border:0;
+  background:none;
+  color:white;
+  font-size:11px;
+  padding:3px;
+}
+
 .container{
   max-width:1100px;
   margin:auto;
-  padding:18px
-}
-.page-title{
-  margin:5px 0 18px
-}
-.page-title h2{
-  margin:0 0 5px
-}
-.page-title p{
-  margin:0;
-  color:#667b8d;
-  font-size:13px
+  padding:18px;
 }
 
-/* CARDS */
-.cards{
+
+/* =========================
+   TITLES
+========================= */
+
+.title{
+  margin-bottom:18px;
+}
+
+.title h2{
+  margin:0 0 5px;
+}
+
+.title p{
+  margin:0;
+  color:#708391;
+  font-size:13px;
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+.stats{
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:12px;
-  margin-bottom:18px
+  margin-bottom:18px;
 }
+
 .stat{
   background:white;
   border-radius:17px;
-  padding:17px;
-  box-shadow:0 4px 15px rgba(16,42,67,.06)
-}
-.stat .icon{font-size:24px}
-.stat strong{
-  display:block;
-  margin-top:8px;
-  font-size:19px
-}
-.stat span{
-  color:#718493;
-  font-size:12px
+  padding:16px;
+  box-shadow:0 4px 15px rgba(16,42,67,.06);
 }
 
-/* MENU */
+.stat-icon{
+  font-size:24px;
+}
+
+.stat-number{
+  display:block;
+  margin-top:7px;
+  font-size:18px;
+  font-weight:bold;
+}
+
+.stat-label{
+  color:#708391;
+  font-size:12px;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
 .menu{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:12px
+  gap:12px;
 }
-.menu-btn{
+
+.menu-button{
   border:0;
   background:white;
-  border-radius:17px;
-  padding:20px 12px;
-  text-align:center;
   color:#102a43;
+  border-radius:17px;
+  padding:20px 10px;
+  font-size:15px;
   box-shadow:0 4px 15px rgba(16,42,67,.06);
-  font-size:15px
 }
-.menu-btn div{
-  font-size:28px;
-  margin-bottom:8px
-}
-.menu-btn:hover{transform:translateY(-1px)}
 
-/* SECTIONS */
+.menu-button div{
+  font-size:28px;
+  margin-bottom:8px;
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
 .section{
-  display:none
+  display:none;
 }
+
 .section.active{
-  display:block
+  display:block;
 }
+
 .panel{
   background:white;
   border-radius:18px;
   padding:18px;
+  margin-bottom:15px;
   box-shadow:0 4px 15px rgba(16,42,67,.06);
-  margin-bottom:15px
-}
-.panel h3{
-  margin-top:0
 }
 
-/* FORM */
-.grid{
+
+/* =========================
+   FORMS
+========================= */
+
+.form-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:12px
+  gap:12px;
 }
+
 .field label{
   display:block;
   font-size:12px;
+  color:#52697a;
   margin-bottom:5px;
-  color:#52697a
 }
+
 .field input,
 .field select,
 .field textarea{
   width:100%;
   padding:12px;
-  border:1px solid #d7e0e6;
+  border:1px solid #d5dfe5;
   border-radius:10px;
   outline:none;
-  background:white
+  background:white;
 }
+
 .field textarea{
   min-height:90px;
-  resize:vertical
+  resize:vertical;
 }
-.full{grid-column:1/-1}
-.form-buttons{
+
+.full{
+  grid-column:1/-1;
+}
+
+.actions{
   display:flex;
   gap:10px;
-  margin-top:15px
+  margin-top:15px;
 }
+
 .btn{
   border:0;
   border-radius:10px;
-  padding:12px 18px
-}
-.btn-primary{
-  background:#102a43;
-  color:white
-}
-.btn-gold{
-  background:#c9a227;
-  color:white
-}
-.btn-light{
-  background:#edf3f6;
-  color:#102a43
-}
-.btn-danger{
-  background:#a52b2b;
-  color:white
+  padding:12px 18px;
 }
 
-/* TABLE */
-.table-wrap{
-  overflow-x:auto
+.btn-primary{
+  background:#102a43;
+  color:white;
 }
+
+.btn-gold{
+  background:#c9a227;
+  color:white;
+}
+
+.btn-light{
+  background:#edf3f6;
+  color:#102a43;
+}
+
+
+/* =========================
+   TABLE
+========================= */
+
+.table-wrap{
+  overflow-x:auto;
+}
+
 table{
   width:100%;
   border-collapse:collapse;
-  min-width:650px
-}
-th,td{
-  padding:11px 9px;
-  border-bottom:1px solid #edf0f2;
-  text-align:right;
-  font-size:13px
-}
-th{
-  color:#52697a;
-  background:#f7fafb
-}
-.badge{
-  display:inline-block;
-  padding:5px 9px;
-  border-radius:20px;
-  background:#e9f6ee;
-  color:#217346;
-  font-size:11px
+  min-width:650px;
 }
 
-/* SEARCH */
+th,td{
+  padding:11px 8px;
+  border-bottom:1px solid #edf0f2;
+  text-align:right;
+  font-size:13px;
+}
+
+th{
+  background:#f7fafb;
+  color:#52697a;
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
 .search{
   width:100%;
   padding:13px;
-  border:1px solid #d7e0e6;
+  border:1px solid #d5dfe5;
   border-radius:11px;
-  margin-bottom:12px
+  margin-bottom:12px;
 }
 
-/* MOBILE */
+
+/* =========================
+   MOBILE
+========================= */
+
 @media(max-width:750px){
-  .cards{grid-template-columns:repeat(2,1fr)}
-  .menu{grid-template-columns:repeat(2,1fr)}
-  .grid{grid-template-columns:1fr}
-  .full{grid-column:auto}
+
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .menu{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .full{
+    grid-column:auto;
+  }
+
 }
+
 @media(max-width:430px){
-  .container{padding:12px}
-  .cards{gap:8px}
-  .stat{padding:13px}
-  .stat strong{font-size:15px}
-  .menu{gap:8px}
-  .menu-btn{padding:16px 8px}
+
+  .logo h1{
+    font-size:34px;
+  }
+
+  .container{
+    padding:12px;
+  }
+
+  .menu{
+    gap:8px;
+  }
+
+  .menu-button{
+    padding:16px 8px;
+  }
+
 }
+
 
 /* PRINT */
+
 @media print{
-  .topbar,.no-print{display:none!important}
-  body{background:white}
-  .container{max-width:none}
+
+  .topbar,
+  .no-print{
+    display:none!important;
+  }
+
+  body{
+    background:white;
+  }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- ================= LOGIN ================= -->
 
-<div id="login">
+<!-- =========================
+     HOME
+========================= -->
 
-  <div class="login-box">
+<div id="homePage" class="home">
+
+  <div class="home-box">
 
     <div class="logo">
+
       <h1>ارز پلاس</h1>
-      <span>ArzPlusMarket</span>
+
+      <p>ArzPlusMarket</p>
+
     </div>
 
-    <h2>ورود به پنل</h2>
+    <div class="home-subtitle">
+      سامانه مدیریت و خدمات ارز و طلا
+    </div>
 
-    <input id="loginUser"
-           class="input"
-           type="text"
-           placeholder="نام کاربری">
+    <div class="home-card">
 
-    <input id="loginPass"
-           class="input"
-           type="password"
-           placeholder="رمز عبور">
+      <button
+        class="home-button program-button"
+        onclick="openProgram()">
 
-    <button class="primary" onclick="login()">
-      ورود
-    </button>
+        📱 ورود به برنامه
 
-    <div id="loginError" class="login-error"></div>
+      </button>
+
+      <button
+        class="home-button panel-button"
+        onclick="openPanel()">
+
+        🔐 ورود به پنل کاربری
+
+      </button>
+
+    </div>
+
+    <div class="home-footer">
+      ArzPlusMarket
+    </div>
 
   </div>
 
 </div>
 
 
-<!-- ================= APP ================= -->
+<!-- =========================
+     LOGIN
+========================= -->
 
-<div id="app" class="hidden">
+<div id="loginPage" class="login hidden">
+
+  <div class="login-box">
+
+    <div class="logo">
+
+      <h1>ارز پلاس</h1>
+
+      <p>ورود به پنل کاربری</p>
+
+    </div>
+
+    <h2>🔐 ورود</h2>
+
+    <input
+      id="username"
+      class="input"
+      type="text"
+      placeholder="نام کاربری">
+
+    <input
+      id="password"
+      class="input"
+      type="password"
+      placeholder="رمز عبور">
+
+    <button
+      class="login-button"
+      onclick="login()">
+
+      ورود به پنل
+
+    </button>
+
+    <button
+      class="back-button"
+      onclick="backHome()">
+
+      بازگشت به صفحه اصلی
+
+    </button>
+
+    <div
+      id="loginError"
+      class="error">
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================
+     APP
+========================= -->
+
+<div id="app" class="app hidden">
 
 <header class="topbar">
-  <div class="top-title">
+
+  <div class="brand">
+
     ارز پلاس
-    <small>ArzPlusMarket | پنل مدیریت</small>
+
+    <small>
+      ArzPlusMarket | پنل مدیریت
+    </small>
+
   </div>
 
-  <div class="user">
-    <span id="currentUser"></span>
+  <div class="user-area">
+
+    <span id="userName"></span>
+
     <br>
+
     <button
-      onclick="logout()"
-      style="background:none;border:0;color:#fff;font-size:11px">
+      class="logout"
+      onclick="logout()">
+
       خروج
+
     </button>
+
   </div>
+
 </header>
 
 
 <div class="container">
 
 
-<!-- ================= DASHBOARD ================= -->
+<!-- =========================
+     DASHBOARD
+========================= -->
 
-<section id="dashboard" class="section active">
+<section
+  id="dashboard"
+  class="section active">
 
-  <div class="page-title">
+  <div class="title">
+
     <h2>🏠 داشبورد</h2>
-    <p>مدیریت اسناد و معاملات ارز پلاس</p>
+
+    <p>
+      مدیریت معاملات و اسناد ارز پلاس
+    </p>
+
   </div>
 
-  <div class="cards">
+
+  <div class="stats">
 
     <div class="stat">
-      <div class="icon">🧾</div>
-      <strong id="statInvoices">0</strong>
-      <span>تعداد اسناد</span>
+
+      <div class="stat-icon">🧾</div>
+
+      <span
+        id="invoiceCount"
+        class="stat-number">
+        0
+      </span>
+
+      <span class="stat-label">
+        اسناد
+      </span>
+
     </div>
 
-    <div class="stat">
-      <div class="icon">👥</div>
-      <strong id="statCustomers">0</strong>
-      <span>مشتریان</span>
-    </div>
 
     <div class="stat">
-      <div class="icon">💰</div>
-      <strong id="statSales">0</strong>
-      <span>مجموع معاملات</span>
+
+      <div class="stat-icon">👥</div>
+
+      <span
+        id="customerCount"
+        class="stat-number">
+        0
+      </span>
+
+      <span class="stat-label">
+        مشتریان
+      </span>
+
     </div>
 
+
     <div class="stat">
-      <div class="icon">📦</div>
-      <strong id="statInventory">0</strong>
-      <span>اقلام موجودی</span>
+
+      <div class="stat-icon">💰</div>
+
+      <span
+        id="totalAmount"
+        class="stat-number">
+        0
+      </span>
+
+      <span class="stat-label">
+        مجموع معاملات
+      </span>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div class="stat-icon">📦</div>
+
+      <span
+        id="inventoryCount"
+        class="stat-number">
+        0
+      </span>
+
+      <span class="stat-label">
+        موجودی
+      </span>
+
     </div>
 
   </div>
@@ -404,34 +739,63 @@ th{
 
   <div class="menu">
 
-    <button class="menu-btn" onclick="showSection('invoice')">
+    <button
+      class="menu-button"
+      onclick="showSection('newInvoice')">
+
       <div>🧾</div>
       سند جدید
+
     </button>
 
-    <button class="menu-btn" onclick="showSection('invoices')">
+
+    <button
+      class="menu-button"
+      onclick="showSection('invoices')">
+
       <div>📂</div>
       اسناد و فاکتورها
+
     </button>
 
-    <button class="menu-btn" onclick="showSection('customers')">
+
+    <button
+      class="menu-button"
+      onclick="showSection('customers')">
+
       <div>👥</div>
       مشتریان
+
     </button>
 
-    <button class="menu-btn" onclick="showSection('accounts')">
+
+    <button
+      class="menu-button"
+      onclick="showSection('accounts')">
+
       <div>💰</div>
       حساب و تسویه
+
     </button>
 
-    <button class="menu-btn" onclick="showSection('inventory')">
+
+    <button
+      class="menu-button"
+      onclick="showSection('inventory')">
+
       <div>📦</div>
       موجودی
+
     </button>
 
-    <button class="menu-btn" onclick="showSection('reports')">
+
+    <button
+      class="menu-button"
+      onclick="showSection('reports')">
+
       <div>📊</div>
       گزارشات
+
     </button>
 
   </div>
@@ -439,90 +803,221 @@ th{
 </section>
 
 
-<!-- ================= NEW INVOICE ================= -->
+<!-- =========================
+     NEW INVOICE
+========================= -->
 
-<section id="invoice" class="section">
+<section
+  id="newInvoice"
+  class="section">
 
-  <div class="page-title">
+  <div class="title">
+
     <h2>🧾 سند جدید</h2>
-    <p>ثبت خرید یا فروش</p>
+
+    <p>
+      ثبت خرید یا فروش
+    </p>
+
   </div>
+
 
   <div class="panel">
 
-    <div class="grid">
+    <div class="form-grid">
+
 
       <div class="field">
-        <label>نوع معامله</label>
+
+        <label>
+          نوع معامله
+        </label>
+
         <select id="tradeType">
-          <option value="فروش">فروش</option>
-          <option value="خرید">خرید</option>
+
+          <option value="فروش">
+            فروش
+          </option>
+
+          <option value="خرید">
+            خرید
+          </option>
+
         </select>
+
       </div>
 
+
       <div class="field">
-        <label>نوع کالا</label>
+
+        <label>
+          نوع کالا
+        </label>
+
         <select id="product">
-          <option>طلای ۱۸ عیار</option>
-          <option>طلای متفرقه</option>
-          <option>آبشده</option>
-          <option>نقره</option>
-          <option>دلار</option>
-          <option>یورو</option>
-          <option>لیر</option>
+
+          <option>
+            طلای ۱۸ عیار
+          </option>
+
+          <option>
+            طلای متفرقه
+          </option>
+
+          <option>
+            آبشده
+          </option>
+
+          <option>
+            نقره
+          </option>
+
+          <option>
+            دلار
+          </option>
+
+          <option>
+            یورو
+          </option>
+
+          <option>
+            لیر
+          </option>
+
         </select>
+
       </div>
 
-      <div class="field">
-        <label>نام مشتری</label>
-        <input id="customerName" placeholder="نام و نام خانوادگی">
-      </div>
 
       <div class="field">
-        <label>شماره تماس</label>
-        <input id="customerPhone" placeholder="شماره موبایل">
+
+        <label>
+          نام مشتری
+        </label>
+
+        <input
+          id="customerName"
+          placeholder="نام و نام خانوادگی">
+
       </div>
 
-      <div class="field">
-        <label>مقدار / وزن</label>
-        <input id="quantity" type="number" step="0.001" placeholder="مثلاً 2.350">
-      </div>
 
       <div class="field">
-        <label>قیمت واحد</label>
-        <input id="unitPrice" type="number" placeholder="قیمت">
+
+        <label>
+          شماره تماس
+        </label>
+
+        <input
+          id="customerPhone"
+          placeholder="شماره موبایل">
+
       </div>
 
-      <div class="field">
-        <label>اجرت / اختلاف</label>
-        <input id="fee" type="number" value="0">
-      </div>
 
       <div class="field">
-        <label>وضعیت پرداخت</label>
+
+        <label>
+          مقدار / وزن
+        </label>
+
+        <input
+          id="quantity"
+          type="number"
+          step="0.001"
+          placeholder="مثلاً 2.350">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          قیمت واحد
+        </label>
+
+        <input
+          id="unitPrice"
+          type="number"
+          placeholder="قیمت">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          اجرت / اختلاف
+        </label>
+
+        <input
+          id="fee"
+          type="number"
+          value="0">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          وضعیت پرداخت
+        </label>
+
         <select id="paymentStatus">
-          <option>تسویه کامل</option>
-          <option>بخشی پرداخت شده</option>
-          <option>تسویه نشده</option>
+
+          <option>
+            تسویه کامل
+          </option>
+
+          <option>
+            بخشی پرداخت شده
+          </option>
+
+          <option>
+            تسویه نشده
+          </option>
+
         </select>
+
       </div>
+
 
       <div class="field full">
-        <label>توضیحات</label>
-        <textarea id="description"
-          placeholder="توضیحات معامله..."></textarea>
+
+        <label>
+          توضیحات
+        </label>
+
+        <textarea
+          id="description"
+          placeholder="توضیحات معامله">
+        </textarea>
+
       </div>
 
     </div>
 
-    <div class="form-buttons">
-      <button class="btn btn-primary" onclick="saveInvoice()">
+
+    <div class="actions">
+
+      <button
+        class="btn btn-primary"
+        onclick="saveInvoice()">
+
         ثبت سند
+
       </button>
 
-      <button class="btn btn-light" onclick="showSection('dashboard')">
+
+      <button
+        class="btn btn-light"
+        onclick="showSection('dashboard')">
+
         انصراف
+
       </button>
+
     </div>
 
   </div>
@@ -530,36 +1025,77 @@ th{
 </section>
 
 
-<!-- ================= INVOICES ================= -->
+<!-- =========================
+     INVOICES
+========================= -->
 
-<section id="invoices" class="section">
+<section
+  id="invoices"
+  class="section">
 
-  <div class="page-title">
-    <h2>📂 اسناد و فاکتورها</h2>
-    <p>تمام اسناد ثبت‌شده</p>
+  <div class="title">
+
+    <h2>
+      📂 اسناد و فاکتورها
+    </h2>
+
+    <p>
+      فهرست اسناد ثبت شده
+    </p>
+
   </div>
+
 
   <div class="panel">
 
-    <input class="search"
-      placeholder="🔍 جست‌وجو در اسناد..."
+    <input
+      class="search"
+      placeholder="🔍 جست‌وجو..."
       oninput="searchInvoices(this.value)">
+
 
     <div class="table-wrap">
 
       <table>
 
         <thead>
+
           <tr>
-            <th>شماره</th>
-            <th>مشتری</th>
-            <th>نوع</th>
-            <th>کالا</th>
-            <th>مقدار</th>
-            <th>مبلغ</th>
-            <th>ثبت‌کننده</th>
-            <th>عملیات</th>
+
+            <th>
+              شماره
+            </th>
+
+            <th>
+              مشتری
+            </th>
+
+            <th>
+              نوع
+            </th>
+
+            <th>
+              کالا
+            </th>
+
+            <th>
+              مقدار
+            </th>
+
+            <th>
+              مبلغ
+            </th>
+
+            <th>
+              ثبت‌کننده
+            </th>
+
+            <th>
+              عملیات
+            </th>
+
           </tr>
+
         </thead>
 
         <tbody id="invoiceTable"></tbody>
@@ -573,55 +1109,98 @@ th{
 </section>
 
 
-<!-- ================= CUSTOMERS ================= -->
+<!-- =========================
+     CUSTOMERS
+========================= -->
 
-<section id="customers" class="section">
+<section
+  id="customers"
+  class="section">
 
-  <div class="page-title">
-    <h2>👥 مشتریان</h2>
-    <p>پرونده مشتریان</p>
+  <div class="title">
+
+    <h2>
+      👥 مشتریان
+    </h2>
+
+    <p>
+      مدیریت مشتریان
+    </p>
+
   </div>
+
 
   <div class="panel">
 
-    <div class="grid">
+    <div class="form-grid">
 
       <div class="field">
-        <label>نام مشتری</label>
-        <input id="newCustomerName">
+
+        <label>
+          نام مشتری
+        </label>
+
+        <input
+          id="newCustomerName">
+
       </div>
 
+
       <div class="field">
-        <label>شماره تماس</label>
-        <input id="newCustomerPhone">
+
+        <label>
+          شماره تماس
+        </label>
+
+        <input
+          id="newCustomerPhone">
+
       </div>
 
     </div>
 
-    <button class="btn btn-primary"
+
+    <button
+      class="btn btn-primary"
       onclick="addCustomer()">
+
       افزودن مشتری
+
     </button>
 
   </div>
 
+
   <div class="panel">
 
-    <input class="search"
+    <input
+      class="search"
       placeholder="🔍 جست‌وجوی مشتری..."
       oninput="searchCustomers(this.value)">
+
 
     <div class="table-wrap">
 
       <table>
 
         <thead>
+
           <tr>
-            <th>نام</th>
-            <th>شماره تماس</th>
-            <th>تعداد معاملات</th>
-            <th>عملیات</th>
+
+            <th>
+              نام
+            </th>
+
+            <th>
+              شماره
+            </th>
+
+            <th>
+              معاملات
+            </th>
+
           </tr>
+
         </thead>
 
         <tbody id="customerTable"></tbody>
@@ -635,88 +1214,182 @@ th{
 </section>
 
 
-<!-- ================= ACCOUNTS ================= -->
+<!-- =========================
+     ACCOUNTS
+========================= -->
 
-<section id="accounts" class="section">
+<section
+  id="accounts"
+  class="section">
 
-  <div class="page-title">
-    <h2>💰 حساب و تسویه</h2>
-    <p>پیگیری پرداخت‌ها و مانده‌ها</p>
+  <div class="title">
+
+    <h2>
+      💰 حساب و تسویه
+    </h2>
+
+    <p>
+      محاسبه مانده حساب
+    </p>
+
   </div>
+
 
   <div class="panel">
 
-    <div class="grid">
+    <div class="form-grid">
 
       <div class="field">
-        <label>نام مشتری</label>
+
+        <label>
+          نام مشتری
+        </label>
+
         <input id="accountCustomer">
+
       </div>
 
-      <div class="field">
-        <label>مبلغ کل</label>
-        <input id="accountTotal" type="number">
-      </div>
 
       <div class="field">
-        <label>پرداخت شده</label>
-        <input id="accountPaid" type="number">
+
+        <label>
+          مبلغ کل
+        </label>
+
+        <input
+          id="accountTotal"
+          type="number">
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          پرداخت شده
+        </label>
+
+        <input
+          id="accountPaid"
+          type="number">
+
       </div>
 
     </div>
 
-    <button class="btn btn-primary"
+
+    <button
+      class="btn btn-primary"
       onclick="calculateAccount()">
-      محاسبه مانده
+
+      محاسبه
+
     </button>
 
-    <div id="accountResult"
-      style="margin-top:15px;font-weight:bold"></div>
+
+    <div
+      id="accountResult"
+      style="margin-top:15px;font-weight:bold">
+
+    </div>
 
   </div>
 
 </section>
 
 
-<!-- ================= INVENTORY ================= -->
+<!-- =========================
+     INVENTORY
+========================= -->
 
-<section id="inventory" class="section">
+<section
+  id="inventory"
+  class="section">
 
-  <div class="page-title">
-    <h2>📦 موجودی</h2>
-    <p>مدیریت موجودی ارز و فلزات</p>
+  <div class="title">
+
+    <h2>
+      📦 موجودی
+    </h2>
+
+    <p>
+      مدیریت موجودی ارز و فلزات
+    </p>
+
   </div>
+
 
   <div class="panel">
 
-    <div class="grid">
+    <div class="form-grid">
 
       <div class="field">
-        <label>نوع موجودی</label>
-        <select id="invProduct">
-          <option>طلای ۱۸ عیار</option>
-          <option>طلای متفرقه</option>
-          <option>آبشده</option>
-          <option>نقره</option>
-          <option>دلار</option>
-          <option>یورو</option>
-          <option>لیر</option>
+
+        <label>
+          نوع موجودی
+        </label>
+
+        <select id="inventoryProduct">
+
+          <option>
+            طلای ۱۸ عیار
+          </option>
+
+          <option>
+            طلای متفرقه
+          </option>
+
+          <option>
+            آبشده
+          </option>
+
+          <option>
+            نقره
+          </option>
+
+          <option>
+            دلار
+          </option>
+
+          <option>
+            یورو
+          </option>
+
+          <option>
+            لیر
+          </option>
+
         </select>
+
       </div>
 
+
       <div class="field">
-        <label>مقدار</label>
-        <input id="invQuantity" type="number" step="0.001">
+
+        <label>
+          مقدار
+        </label>
+
+        <input
+          id="inventoryQuantity"
+          type="number"
+          step="0.001">
+
       </div>
 
     </div>
 
-    <button class="btn btn-primary"
+
+    <button
+      class="btn btn-primary"
       onclick="addInventory()">
+
       ثبت موجودی
+
     </button>
 
   </div>
+
 
   <div class="panel">
 
@@ -725,11 +1398,27 @@ th{
       <table>
 
         <thead>
+
           <tr>
-            <th>کالا</th>
-            <th>مقدار</th>
-            <th>آخرین ثبت</th>
+
+            <th>
+              کالا
+            </th>
+
+            <th>
+              مقدار
+            </th>
+
+            <th>
+              ثبت‌کننده
+            </th>
+
+            <th>
+              تاریخ
+            </th>
+
           </tr>
+
         </thead>
 
         <tbody id="inventoryTable"></tbody>
@@ -743,40 +1432,32 @@ th{
 </section>
 
 
-<!-- ================= REPORTS ================= -->
+<!-- =========================
+     REPORTS
+========================= -->
 
-<section id="reports" class="section">
+<section
+  id="reports"
+  class="section">
 
-  <div class="page-title">
-    <h2>📊 گزارشات</h2>
-    <p>گزارش کلی فعالیت</p>
-  </div>
+  <div class="title">
 
-  <div class="cards">
+    <h2>
+      📊 گزارشات
+    </h2>
 
-    <div class="stat">
-      <div class="icon">🧾</div>
-      <strong id="reportInvoices">0</strong>
-      <span>کل اسناد</span>
-    </div>
-
-    <div class="stat">
-      <div class="icon">👥</div>
-      <strong id="reportCustomers">0</strong>
-      <span>کل مشتریان</span>
-    </div>
-
-    <div class="stat">
-      <div class="icon">💰</div>
-      <strong id="reportTotal">0</strong>
-      <span>مجموع معاملات</span>
-    </div>
+    <p>
+      گزارش فعالیت
+    </p>
 
   </div>
+
 
   <div class="panel">
 
-    <h3>آخرین فعالیت‌ها</h3>
+    <h3>
+      آخرین اسناد
+    </h3>
 
     <div id="activityList"></div>
 
@@ -786,6 +1467,7 @@ th{
 
 
 </div>
+
 </div>
 
 
@@ -795,16 +1477,65 @@ th{
    DATA
 ========================= */
 
-let currentUser = null;
+let currentUser = "";
 
 let invoices =
-  JSON.parse(localStorage.getItem("arzplus_invoices") || "[]");
+  JSON.parse(
+    localStorage.getItem("arzplus_invoices") || "[]"
+  );
 
 let customers =
-  JSON.parse(localStorage.getItem("arzplus_customers") || "[]");
+  JSON.parse(
+    localStorage.getItem("arzplus_customers") || "[]"
+  );
 
 let inventory =
-  JSON.parse(localStorage.getItem("arzplus_inventory") || "[]");
+  JSON.parse(
+    localStorage.getItem("arzplus_inventory") || "[]"
+  );
+
+
+/* =========================
+   HOME
+========================= */
+
+function openProgram(){
+
+  alert(
+    "بخش برنامه برای مشتریان و کاربران عمومی در نسخه بعدی فعال می‌شود."
+  );
+
+}
+
+
+function openPanel(){
+
+  document
+    .getElementById("homePage")
+    .classList.add("hidden");
+
+  document
+    .getElementById("loginPage")
+    .classList.remove("hidden");
+
+}
+
+
+/* =========================
+   BACK HOME
+========================= */
+
+function backHome(){
+
+  document
+    .getElementById("loginPage")
+    .classList.add("hidden");
+
+  document
+    .getElementById("homePage")
+    .classList.remove("hidden");
+
+}
 
 
 /* =========================
@@ -813,48 +1544,85 @@ let inventory =
 
 function login(){
 
-  const user =
-    document.getElementById("loginUser").value.trim();
+  const username =
+    document
+      .getElementById("username")
+      .value
+      .trim();
 
-  const pass =
-    document.getElementById("loginPass").value;
+  const password =
+    document
+      .getElementById("password")
+      .value;
 
-  /*
-    موقتاً برای تست ظاهر برنامه:
-    علیرضا / 1234
-    مسعود / 5678
+  const error =
+    document.getElementById("loginError");
 
-    بعداً این قسمت را با Supabase
-    جایگزین می‌کنیم.
-  */
 
   if(
-    (user==="علیرضا" && pass==="1234") ||
-    (user==="مسعود" && pass==="5678")
+    username === "علیرضا" &&
+    password === "1234"
   ){
 
-    currentUser=user;
+    enterApp("علیرضا");
 
-    localStorage.setItem(
-      "arzplus_current_user",
-      user
-    );
-
-    document.getElementById("login").classList.add("hidden");
-
-    document.getElementById("app").classList.remove("hidden");
-
-    document.getElementById("currentUser").innerText =
-      user;
-
-    refreshAll();
-
-  }else{
-
-    document.getElementById("loginError").innerText =
-      "نام کاربری یا رمز عبور اشتباه است.";
+    return;
 
   }
+
+
+  if(
+    username === "مسعود" &&
+    password === "5678"
+  ){
+
+    enterApp("مسعود");
+
+    return;
+
+  }
+
+
+  error.innerText =
+    "نام کاربری یا رمز عبور اشتباه است.";
+
+}
+
+
+/* =========================
+   ENTER APP
+========================= */
+
+function enterApp(user){
+
+  currentUser = user;
+
+  localStorage.setItem(
+    "arzplus_user",
+    user
+  );
+
+
+  document
+    .getElementById("homePage")
+    .classList.add("hidden");
+
+  document
+    .getElementById("loginPage")
+    .classList.add("hidden");
+
+  document
+    .getElementById("app")
+    .classList.remove("hidden");
+
+
+  document
+    .getElementById("userName")
+    .innerText = user;
+
+
+  refreshAll();
+
 }
 
 
@@ -864,37 +1632,51 @@ function login(){
 
 function logout(){
 
-  localStorage.removeItem("arzplus_current_user");
+  localStorage.removeItem(
+    "arzplus_user"
+  );
 
-  currentUser=null;
+  currentUser = "";
 
-  document.getElementById("app").classList.add("hidden");
+  document
+    .getElementById("app")
+    .classList.add("hidden");
 
-  document.getElementById("login").classList.remove("hidden");
+  document
+    .getElementById("homePage")
+    .classList.remove("hidden");
 
-  document.getElementById("loginUser").value="";
-  document.getElementById("loginPass").value="";
 }
 
 
 /* =========================
-   SECTION
+   SECTIONS
 ========================= */
 
 function showSection(id){
 
-  document.querySelectorAll(".section")
-    .forEach(s=>s.classList.remove("active"));
+  document
+    .querySelectorAll(".section")
+    .forEach(
+      s => s.classList.remove("active")
+    );
 
-  document.getElementById(id)
-    .classList.add("active");
+
+  const section =
+    document.getElementById(id);
+
+
+  if(section){
+
+    section.classList.add("active");
+
+  }
+
 
   refreshAll();
 
-  window.scrollTo({
-    top:0,
-    behavior:"smooth"
-  });
+  window.scrollTo(0,0);
+
 }
 
 
@@ -905,174 +1687,250 @@ function showSection(id){
 function saveInvoice(){
 
   const customer =
-    document.getElementById("customerName").value.trim();
+    document
+      .getElementById("customerName")
+      .value
+      .trim();
+
 
   const phone =
-    document.getElementById("customerPhone").value.trim();
+    document
+      .getElementById("customerPhone")
+      .value
+      .trim();
+
 
   const trade =
-    document.getElementById("tradeType").value;
+    document
+      .getElementById("tradeType")
+      .value;
+
 
   const product =
-    document.getElementById("product").value;
+    document
+      .getElementById("product")
+      .value;
+
 
   const quantity =
-    Number(document.getElementById("quantity").value || 0);
+    Number(
+      document
+        .getElementById("quantity")
+        .value || 0
+    );
+
 
   const unitPrice =
-    Number(document.getElementById("unitPrice").value || 0);
+    Number(
+      document
+        .getElementById("unitPrice")
+        .value || 0
+    );
+
 
   const fee =
-    Number(document.getElementById("fee").value || 0);
+    Number(
+      document
+        .getElementById("fee")
+        .value || 0
+    );
+
 
   const payment =
-    document.getElementById("paymentStatus").value;
+    document
+      .getElementById("paymentStatus")
+      .value;
+
 
   const description =
-    document.getElementById("description").value.trim();
+    document
+      .getElementById("description")
+      .value
+      .trim();
+
 
   if(!customer){
-    alert("نام مشتری را وارد کنید.");
+
+    alert(
+      "نام مشتری را وارد کنید."
+    );
+
     return;
+
   }
 
-  if(quantity<=0){
-    alert("مقدار یا وزن را وارد کنید.");
+
+  if(quantity <= 0){
+
+    alert(
+      "مقدار یا وزن را وارد کنید."
+    );
+
     return;
+
   }
+
 
   const total =
-    (quantity * unitPrice) + fee;
+    quantity * unitPrice + fee;
+
 
   const number =
     "AP-" +
-    new Date().getFullYear() +
-    "-" +
-    String(invoices.length+1).padStart(5,"0");
+    String(
+      invoices.length + 1
+    ).padStart(5,"0");
 
-  const invoice={
+
+  invoices.unshift({
 
     id:Date.now(),
 
-    number,
+    number:number,
 
-    customer,
+    customer:customer,
 
-    phone,
+    phone:phone,
 
-    trade,
+    trade:trade,
 
-    product,
+    product:product,
 
-    quantity,
+    quantity:quantity,
 
-    unitPrice,
+    unitPrice:unitPrice,
 
-    fee,
+    fee:fee,
 
-    total,
+    total:total,
 
-    payment,
+    payment:payment,
 
-    description,
+    description:description,
 
     user:currentUser,
 
-    date:new Date().toLocaleString("fa-IR")
+    date:new Date()
+      .toLocaleString("fa-IR")
 
-  };
+  });
 
-  invoices.unshift(invoice);
 
   saveData();
 
   alert(
-    "سند با موفقیت ثبت شد.\n\nشماره سند: " +
+    "سند ثبت شد.\n\nشماره سند: " +
     number
   );
 
-  clearInvoiceForm();
+
+  clearInvoice();
 
   showSection("invoices");
+
 }
 
 
 /* =========================
-   CLEAR FORM
+   CLEAR INVOICE
 ========================= */
 
-function clearInvoiceForm(){
+function clearInvoice(){
 
-  [
-    "customerName",
-    "customerPhone",
-    "quantity",
-    "unitPrice",
-    "fee",
+  document.getElementById(
+    "customerName"
+  ).value = "";
+
+  document.getElementById(
+    "customerPhone"
+  ).value = "";
+
+  document.getElementById(
+    "quantity"
+  ).value = "";
+
+  document.getElementById(
+    "unitPrice"
+  ).value = "";
+
+  document.getElementById(
+    "fee"
+  ).value = "0";
+
+  document.getElementById(
     "description"
-  ].forEach(id=>{
-    document.getElementById(id).value="";
-  });
+  ).value = "";
 
-  document.getElementById("fee").value=0;
 }
 
 
 /* =========================
-   INVOICE TABLE
+   INVOICES
 ========================= */
 
-function renderInvoices(list=invoices){
+function renderInvoices(list){
 
   const table =
-    document.getElementById("invoiceTable");
+    document.getElementById(
+      "invoiceTable"
+    );
 
-  table.innerHTML="";
+
+  table.innerHTML = "";
+
 
   if(!list.length){
 
-    table.innerHTML=
-      `<tr><td colspan="8"
-      style="text-align:center">
-      سندی ثبت نشده است
-      </td></tr>`;
+    table.innerHTML =
+      `<tr>
+        <td colspan="8"
+          style="text-align:center">
+          هنوز سندی ثبت نشده
+        </td>
+      </tr>`;
 
     return;
+
   }
 
-  list.forEach(i=>{
 
-    const tr=document.createElement("tr");
+  list.forEach(item => {
 
-    tr.innerHTML=`
+    const row =
+      document.createElement("tr");
 
-      <td>${i.number}</td>
 
-      <td>${i.customer}</td>
+    row.innerHTML = `
 
-      <td>${i.trade}</td>
+      <td>${item.number}</td>
 
-      <td>${i.product}</td>
+      <td>${item.customer}</td>
 
-      <td>${i.quantity}</td>
+      <td>${item.trade}</td>
 
-      <td>${formatMoney(i.total)}</td>
+      <td>${item.product}</td>
 
-      <td>${i.user}</td>
+      <td>${item.quantity}</td>
+
+      <td>${money(item.total)}</td>
+
+      <td>${item.user}</td>
 
       <td>
         <button
           class="btn btn-light"
-          onclick="viewInvoice(${i.id})">
+          onclick="viewInvoice(${item.id})">
           مشاهده
         </button>
       </td>
 
     `;
 
-    table.appendChild(tr);
+
+    table.appendChild(row);
 
   });
+
 }
 
 
@@ -1082,42 +1940,45 @@ function renderInvoices(list=invoices){
 
 function viewInvoice(id){
 
-  const i =
-    invoices.find(x=>x.id===id);
+  const item =
+    invoices.find(
+      x => x.id === id
+    );
 
-  if(!i)return;
 
-  const text=`
+  if(!item)return;
 
-شماره سند: ${i.number}
 
-مشتری: ${i.customer}
+  alert(
 
-شماره تماس: ${i.phone || "-"}
+`شماره سند: ${item.number}
 
-نوع معامله: ${i.trade}
+مشتری: ${item.customer}
 
-کالا: ${i.product}
+شماره تماس: ${item.phone || "-"}
 
-مقدار: ${i.quantity}
+نوع معامله: ${item.trade}
 
-قیمت واحد: ${formatMoney(i.unitPrice)}
+کالا: ${item.product}
 
-اجرت/اختلاف: ${formatMoney(i.fee)}
+مقدار: ${item.quantity}
 
-مبلغ نهایی: ${formatMoney(i.total)}
+قیمت واحد: ${money(item.unitPrice)}
 
-وضعیت پرداخت: ${i.payment}
+اجرت / اختلاف: ${money(item.fee)}
 
-ثبت‌کننده: ${i.user}
+مبلغ نهایی: ${money(item.total)}
 
-تاریخ: ${i.date}
+وضعیت پرداخت: ${item.payment}
 
-توضیحات: ${i.description || "-"}
+ثبت‌کننده: ${item.user}
 
-  `;
+تاریخ: ${item.date}
 
-  alert(text);
+توضیحات: ${item.description || "-"}`
+
+  );
+
 }
 
 
@@ -1125,19 +1986,26 @@ function viewInvoice(id){
    SEARCH INVOICES
 ========================= */
 
-function searchInvoices(q){
+function searchInvoices(value){
 
-  q=q.trim().toLowerCase();
+  const q =
+    value
+      .trim()
+      .toLowerCase();
 
-  const result=
-    invoices.filter(i=>
-      Object.values(i)
-      .join(" ")
-      .toLowerCase()
-      .includes(q)
+
+  const result =
+    invoices.filter(
+      item =>
+        Object.values(item)
+          .join(" ")
+          .toLowerCase()
+          .includes(q)
     );
 
+
   renderInvoices(result);
+
 }
 
 
@@ -1147,111 +2015,510 @@ function searchInvoices(q){
 
 function addCustomer(){
 
-  const name=
-    document.getElementById("newCustomerName").value.trim();
+  const name =
+    document
+      .getElementById("newCustomerName")
+      .value
+      .trim();
 
-  const phone=
-    document.getElementById("newCustomerPhone").value.trim();
+
+  const phone =
+    document
+      .getElementById("newCustomerPhone")
+      .value
+      .trim();
+
 
   if(!name){
-    alert("نام مشتری را وارد کنید.");
+
+    alert(
+      "نام مشتری را وارد کنید."
+    );
+
     return;
+
   }
+
 
   customers.push({
 
     id:Date.now(),
 
-    name,
+    name:name,
 
-    phone,
+    phone:phone,
 
-    date:new Date().toLocaleString("fa-IR"),
+    user:currentUser,
 
-    user:currentUser
+    date:new Date()
+      .toLocaleString("fa-IR")
 
   });
+
 
   saveData();
 
-  document.getElementById("newCustomerName").value="";
-  document.getElementById("newCustomerPhone").value="";
+
+  document.getElementById(
+    "newCustomerName"
+  ).value = "";
+
+
+  document.getElementById(
+    "newCustomerPhone"
+  ).value = "";
+
 
   renderCustomers();
 
-  alert("مشتری ثبت شد.");
-}
-
-
-/* =========================
-   CUSTOMER TABLE
-========================= */
-
-function renderCustomers(list=customers){
-
-  const table=
-    document.getElementById("customerTable");
-
-  table.innerHTML="";
-
-  list.forEach(c=>{
-
-    const count=
-      invoices.filter(i=>
-        i.customer===c.name
-      ).length;
-
-    const tr=document.createElement("tr");
-
-    tr.innerHTML=`
-
-      <td>${c.name}</td>
-
-      <td>${c.phone || "-"}</td>
-
-      <td>${count}</td>
-
-      <td>
-        <button
-          class="btn btn-light"
-          onclick="customerDetails('${escapeText(c.name)}')">
-          پرونده
-        </button>
-      </td>
-
-    `;
-
-    table.appendChild(tr);
-
-  });
-
-}
-
-
-/* =========================
-   CUSTOMER SEARCH
-========================= */
-
-function searchCustomers(q){
-
-  q=q.toLowerCase();
-
-  renderCustomers(
-    customers.filter(c=>
-      (c.name+" "+c.phone)
-      .toLowerCase()
-      .includes(q)
-    )
+  alert(
+    "مشتری ثبت شد."
   );
 
 }
 
 
 /* =========================
-   CUSTOMER DETAILS
+   CUSTOMERS TABLE
 ========================= */
 
-function customerDetails(name){
+function renderCustomers(list){
 
-  const list=
-    invoices.filter
+  const table =
+    document.getElementById(
+      "customerTable"
+    );
+
+
+  table.innerHTML = "";
+
+
+  if(!list.length){
+
+    table.innerHTML =
+      `<tr>
+        <td colspan="3"
+          style="text-align:center">
+          هنوز مشتری ثبت نشده
+        </td>
+      </tr>`;
+
+    return;
+
+  }
+
+
+  list.forEach(customer => {
+
+    const count =
+      invoices.filter(
+        invoice =>
+          invoice.customer === customer.name
+      ).length;
+
+
+    const row =
+      document.createElement("tr");
+
+
+    row.innerHTML = `
+
+      <td>
+        ${customer.name}
+      </td>
+
+      <td>
+        ${customer.phone || "-"}
+      </td>
+
+      <td>
+        ${count}
+      </td>
+
+    `;
+
+
+    table.appendChild(row);
+
+  });
+
+}
+
+
+/* =========================
+   SEARCH CUSTOMERS
+========================= */
+
+function searchCustomers(value){
+
+  const q =
+    value
+      .trim()
+      .toLowerCase();
+
+
+  const result =
+    customers.filter(
+      customer =>
+        (
+          customer.name +
+          " " +
+          customer.phone
+        )
+        .toLowerCase()
+        .includes(q)
+    );
+
+
+  renderCustomers(result);
+
+}
+
+
+/* =========================
+   ACCOUNTS
+========================= */
+
+function calculateAccount(){
+
+  const total =
+    Number(
+      document
+        .getElementById("accountTotal")
+        .value || 0
+    );
+
+
+  const paid =
+    Number(
+      document
+        .getElementById("accountPaid")
+        .value || 0
+    );
+
+
+  const remaining =
+    total - paid;
+
+
+  document
+    .getElementById("accountResult")
+    .innerText =
+      "مانده حساب: " +
+      money(remaining) +
+      " تومان";
+
+}
+
+
+/* =========================
+   INVENTORY
+========================= */
+
+function addInventory(){
+
+  const product =
+    document
+      .getElementById("inventoryProduct")
+      .value;
+
+
+  const quantity =
+    Number(
+      document
+        .getElementById("inventoryQuantity")
+        .value || 0
+    );
+
+
+  if(quantity <= 0){
+
+    alert(
+      "مقدار موجودی را وارد کنید."
+    );
+
+    return;
+
+  }
+
+
+  inventory.push({
+
+    id:Date.now(),
+
+    product:product,
+
+    quantity:quantity,
+
+    user:currentUser,
+
+    date:new Date()
+      .toLocaleString("fa-IR")
+
+  });
+
+
+  saveData();
+
+
+  document.getElementById(
+    "inventoryQuantity"
+  ).value = "";
+
+
+  renderInventory();
+
+
+  alert(
+    "موجودی ثبت شد."
+  );
+
+}
+
+
+/* =========================
+   INVENTORY TABLE
+========================= */
+
+function renderInventory(){
+
+  const table =
+    document.getElementById(
+      "inventoryTable"
+    );
+
+
+  table.innerHTML = "";
+
+
+  if(!inventory.length){
+
+    table.innerHTML =
+      `<tr>
+        <td colspan="4"
+          style="text-align:center">
+          هنوز موجودی ثبت نشده
+        </td>
+      </tr>`;
+
+    return;
+
+  }
+
+
+  inventory.forEach(item => {
+
+    const row =
+      document.createElement("tr");
+
+
+    row.innerHTML = `
+
+      <td>
+        ${item.product}
+      </td>
+
+      <td>
+        ${item.quantity}
+      </td>
+
+      <td>
+        ${item.user}
+      </td>
+
+      <td>
+        ${item.date}
+      </td>
+
+    `;
+
+
+    table.appendChild(row);
+
+  });
+
+}
+
+
+/* =========================
+   REPORTS
+========================= */
+
+function renderReports(){
+
+  const list =
+    document.getElementById(
+      "activityList"
+    );
+
+
+  list.innerHTML = "";
+
+
+  if(!invoices.length){
+
+    list.innerHTML =
+      "هنوز فعالیتی ثبت نشده است.";
+
+    return;
+
+  }
+
+
+  invoices
+    .slice(0,10)
+    .forEach(item => {
+
+      const div =
+        document.createElement("div");
+
+
+      div.style.padding =
+        "10px 0";
+
+      div.style.borderBottom =
+        "1px solid #edf0f2";
+
+
+      div.innerText =
+        "🧾 " +
+        item.number +
+        " | " +
+        item.customer +
+        " | " +
+        item.user +
+        " | " +
+        item.date;
+
+
+      list.appendChild(div);
+
+    });
+
+}
+
+
+/* =========================
+   STATS
+========================= */
+
+function refreshStats(){
+
+  document.getElementById(
+    "invoiceCount"
+  ).innerText =
+    invoices.length;
+
+
+  document.getElementById(
+    "customerCount"
+  ).innerText =
+    customers.length;
+
+
+  const total =
+    invoices.reduce(
+      (sum,item) =>
+        sum + Number(item.total || 0),
+      0
+    );
+
+
+  document.getElementById(
+    "totalAmount"
+  ).innerText =
+    money(total);
+
+
+  document.getElementById(
+    "inventoryCount"
+  ).innerText =
+    inventory.length;
+
+}
+
+
+/* =========================
+   SAVE DATA
+========================= */
+
+function saveData(){
+
+  localStorage.setItem(
+    "arzplus_invoices",
+    JSON.stringify(invoices)
+  );
+
+
+  localStorage.setItem(
+    "arzplus_customers",
+    JSON.stringify(customers)
+  );
+
+
+  localStorage.setItem(
+    "arzplus_inventory",
+    JSON.stringify(inventory)
+  );
+
+}
+
+
+/* =========================
+   MONEY
+========================= */
+
+function money(value){
+
+  return Number(value || 0)
+    .toLocaleString("fa-IR");
+
+}
+
+
+/* =========================
+   REFRESH
+========================= */
+
+function refreshAll(){
+
+  refreshStats();
+
+  renderInvoices(invoices);
+
+  renderCustomers(customers);
+
+  renderInventory();
+
+  renderReports();
+
+}
+
+
+/* =========================
+   AUTO LOGIN
+========================= */
+
+window.addEventListener(
+  "load",
+  function(){
+
+    const saved =
+      localStorage.getItem(
+        "arzplus_user"
+      );
+
+
+    if(saved){
+
+      enterApp(saved);
+
+    }
+
+  }
+);
+
+</script>
+
+</body>
+</html>
