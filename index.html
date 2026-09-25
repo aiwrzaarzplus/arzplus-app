@@ -4,10 +4,342 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ارز پلاس</title>
+
+  <title>ارز پلاس | ArzPlusMarket</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #dceaf2, #f8f1df);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #102a43;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 430px;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .logo h1 {
+      margin: 0;
+      font-size: 32px;
+      color: #c9a227;
+    }
+
+    .logo p {
+      margin-top: 8px;
+      color: #102a43;
+      font-size: 14px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.94);
+      border-radius: 22px;
+      padding: 25px;
+      box-shadow: 0 10px 35px rgba(16,42,67,0.15);
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 0;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      margin: 8px 0;
+      border: 1px solid #d5dce2;
+      border-radius: 12px;
+      font-size: 16px;
+      direction: ltr;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 12px;
+      background: #102a43;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .error {
+      color: #b42318;
+      text-align: center;
+      margin-top: 12px;
+      font-size: 14px;
+    }
+
+    .dashboard {
+      display: none;
+    }
+
+    .welcome {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .menu {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .menu button {
+      margin: 0;
+      background: #f8f1df;
+      color: #102a43;
+      border: 1px solid #c9a227;
+    }
+
+    .logout {
+      background: #9b2c2c !important;
+      color: white !important;
+      border: none !important;
+      margin-top: 18px !important;
+    }
+
+    .loading {
+      text-align: center;
+      margin-top: 10px;
+      display: none;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>ارز پلاس</h1>
-  <p>ArzPlusMarket</p>
+
+<div class="container">
+
+  <!-- LOGIN -->
+  <div id="loginPage">
+
+    <div class="logo">
+      <h1>ارز پلاس</h1>
+      <p>ArzPlusMarket</p>
+    </div>
+
+    <div class="card">
+
+      <h2>ورود به پنل</h2>
+
+      <input
+        id="email"
+        type="email"
+        placeholder="ایمیل"
+        autocomplete="username"
+      >
+
+      <input
+        id="password"
+        type="password"
+        placeholder="رمز عبور"
+        autocomplete="current-password"
+      >
+
+      <button onclick="login()">ورود</button>
+
+      <div id="loading" class="loading">
+        در حال ورود...
+      </div>
+
+      <div id="error" class="error"></div>
+
+    </div>
+  </div>
+
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="dashboard">
+
+    <div class="logo">
+      <h1>ارز پلاس</h1>
+      <p>ArzPlusMarket</p>
+    </div>
+
+    <div class="card">
+
+      <div class="welcome">
+        <h2>🏠 داشبورد</h2>
+        <p id="userEmail"></p>
+      </div>
+
+      <div class="menu">
+
+        <button onclick="comingSoon('سند جدید')">
+          🧾 سند جدید
+        </button>
+
+        <button onclick="comingSoon('اسناد و فاکتورها')">
+          📂 اسناد
+        </button>
+
+        <button onclick="comingSoon('مشتریان')">
+          👥 مشتریان
+        </button>
+
+        <button onclick="comingSoon('حساب و تسویه')">
+          💰 حساب‌ها
+        </button>
+
+        <button onclick="comingSoon('موجودی')">
+          📦 موجودی
+        </button>
+
+        <button onclick="comingSoon('گزارشات')">
+          📊 گزارشات
+        </button>
+
+      </div>
+
+      <button class="logout" onclick="logout()">
+        خروج از حساب
+      </button>
+
+    </div>
+  </div>
+
+</div>
+
+
+<script>
+
+  // =========================
+  // SUPABASE
+  // =========================
+
+  const SUPABASE_URL = "اینجا Project URL را قرار بده";
+
+  const SUPABASE_KEY = "اینجا Publishable key یا anon key را قرار بده";
+
+  const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+
+  // =========================
+  // LOGIN
+  // =========================
+
+  async function login() {
+
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value;
+
+    const error = document.getElementById("error");
+    const loading = document.getElementById("loading");
+
+    error.innerText = "";
+
+    if (!email || !password) {
+      error.innerText = "ایمیل و رمز عبور را وارد کنید.";
+      return;
+    }
+
+    loading.style.display = "block";
+
+    const { data, error: loginError } =
+      await supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: password
+      });
+
+    loading.style.display = "none";
+
+    if (loginError) {
+      error.innerText = "ایمیل یا رمز عبور اشتباه است.";
+      return;
+    }
+
+    showDashboard(data.user);
+  }
+
+
+  // =========================
+  // SHOW DASHBOARD
+  // =========================
+
+  function showDashboard(user) {
+
+    document.getElementById("loginPage").style.display = "none";
+
+    document.getElementById("dashboard").style.display = "block";
+
+    document.getElementById("userEmail").innerText =
+      user.email;
+  }
+
+
+  // =========================
+  // LOGOUT
+  // =========================
+
+  async function logout() {
+
+    await supabaseClient.auth.signOut();
+
+    document.getElementById("dashboard").style.display = "none";
+
+    document.getElementById("loginPage").style.display = "block";
+
+    document.getElementById("email").value = "";
+    document.getElementById("password").value = "";
+  }
+
+
+  // =========================
+  // CHECK EXISTING SESSION
+  // =========================
+
+  async function checkSession() {
+
+    const { data } =
+      await supabaseClient.auth.getSession();
+
+    if (data.session) {
+      showDashboard(data.session.user);
+    }
+  }
+
+
+  // =========================
+  // TEMPORARY BUTTONS
+  // =========================
+
+  function comingSoon(name) {
+
+    alert(
+      name + "\n\nاین بخش در مرحله بعد فعال می‌شود."
+    );
+  }
+
+
+  checkSession();
+
+</script>
+
 </body>
 </html>
