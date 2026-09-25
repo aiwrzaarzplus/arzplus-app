@@ -2,469 +2,602 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
 <title>ارز پلاس | ArzPlusMarket</title>
 
-<style>
-*{box-sizing:border-box}
-body{
-margin:0;
-font-family:Tahoma,Arial,sans-serif;
-background:#eef5f8;
-color:#102a43
-}
-button,input,select,textarea{font-family:inherit}
-button{cursor:pointer}
-.hidden{display:none!important}
+<!-- کتابخانه ذخیره فاکتور به عکس -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-.home,.login{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:20px;
-background:linear-gradient(135deg,#dceaf2,#f8f1df)
+<style>
+
+*{
+ box-sizing:border-box;
+}
+
+body{
+ margin:0;
+ font-family:Tahoma,Arial,sans-serif;
+ background:#eef5f8;
+ color:#102a43;
+}
+
+button,input,select,textarea{
+ font-family:inherit;
+}
+
+button{
+ cursor:pointer;
+}
+
+.hidden{
+ display:none!important;
+}
+
+
+/* صفحه اصلی */
+
+.home,
+.login{
+ min-height:100vh;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ padding:20px;
+ background:linear-gradient(135deg,#dceaf2,#f8f1df);
 }
 
 .box{
-width:100%;
-max-width:440px;
-background:#fff;
-padding:30px 24px;
-border-radius:24px;
-box-shadow:0 15px 45px rgba(16,42,67,.15)
+ width:100%;
+ max-width:440px;
+ background:#fff;
+ padding:30px 24px;
+ border-radius:24px;
+ box-shadow:0 15px 45px rgba(16,42,67,.15);
 }
 
-.logo{text-align:center;margin-bottom:28px}
-.logo h1{
-margin:0;
-font-size:38px;
-color:#c9a227
+.logo{
+ text-align:center;
+ margin-bottom:28px;
 }
+
+.logo h1{
+ margin:0;
+ font-size:38px;
+ color:#c9a227;
+}
+
 .logo p{
-margin:7px 0;
-font-size:14px;
-color:#102a43
+ margin:7px 0;
+ font-size:14px;
+ color:#102a43;
 }
 
 .home-title{
-text-align:center;
-font-size:14px;
-color:#52697a;
-margin-bottom:22px
+ text-align:center;
+ font-size:14px;
+ color:#52697a;
+ margin-bottom:22px;
 }
 
 .main-button,
 .login-button{
-width:100%;
-border:0;
-border-radius:14px;
-padding:16px;
-background:#102a43;
-color:#fff;
-font-size:16px;
-font-weight:bold
+ width:100%;
+ border:0;
+ border-radius:14px;
+ padding:16px;
+ background:#102a43;
+ color:#fff;
+ font-size:16px;
+ font-weight:bold;
 }
 
 .back-button{
-width:100%;
-margin-top:9px;
-border:0;
-border-radius:14px;
-padding:13px;
-background:#edf3f6;
-color:#102a43
+ width:100%;
+ margin-top:9px;
+ border:0;
+ border-radius:14px;
+ padding:13px;
+ background:#edf3f6;
+ color:#102a43;
 }
 
 .input{
-width:100%;
-padding:14px;
-margin:6px 0;
-border:1px solid #d5dfe5;
-border-radius:12px;
-outline:none
+ width:100%;
+ padding:14px;
+ margin:6px 0;
+ border:1px solid #d5dfe5;
+ border-radius:12px;
+ outline:none;
 }
 
 .error{
-text-align:center;
-color:#b42318;
-font-size:13px;
-margin-top:10px
+ text-align:center;
+ color:#b42318;
+ font-size:13px;
+ margin-top:10px;
 }
 
+
+/* نوار بالا */
+
 .topbar{
-position:sticky;
-top:0;
-z-index:50;
-background:#102a43;
-color:#fff;
-padding:13px 18px;
-display:flex;
-justify-content:space-between;
-align-items:center
+ position:sticky;
+ top:0;
+ z-index:50;
+ background:#102a43;
+ color:#fff;
+ padding:13px 18px;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
 }
 
 .brand{
-font-size:18px;
-font-weight:bold
+ font-size:18px;
+ font-weight:bold;
 }
 
 .brand small{
-display:block;
-font-size:10px;
-color:#dceaf2;
-margin-top:4px
+ display:block;
+ font-size:10px;
+ color:#dceaf2;
+ margin-top:4px;
 }
 
 .user-area{
-text-align:left;
-font-size:12px
+ text-align:left;
+ font-size:12px;
 }
 
 .logout{
-background:none;
-border:0;
-color:#fff;
-font-size:11px;
-margin-top:3px
+ background:none;
+ border:0;
+ color:#fff;
+ font-size:11px;
+ margin-top:3px;
 }
+
+
+/* محتوا */
 
 .container{
-max-width:1100px;
-margin:auto;
-padding:18px
+ max-width:1100px;
+ margin:auto;
+ padding:18px;
 }
 
-.title h2{margin:0 0 5px}
-.title p{
-margin:0 0 18px;
-color:#708391;
-font-size:13px
+.title h2{
+ margin:0 0 5px;
 }
+
+.title p{
+ margin:0 0 15px;
+ color:#708391;
+ font-size:13px;
+}
+
+
+/* دکمه برگشت */
+
+.back-dashboard{
+ width:100%;
+ margin-bottom:15px;
+ padding:13px;
+ border:0;
+ border-radius:12px;
+ background:#edf3f6;
+ color:#102a43;
+ font-size:14px;
+ font-weight:bold;
+}
+
+
+/* آمار */
 
 .stats{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:12px;
-margin-bottom:18px
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:12px;
+ margin-bottom:18px;
 }
 
 .stat{
-background:#fff;
-padding:16px;
-border-radius:17px;
-box-shadow:0 4px 15px rgba(16,42,67,.06)
+ background:#fff;
+ padding:16px;
+ border-radius:17px;
+ box-shadow:0 4px 15px rgba(16,42,67,.06);
 }
 
 .stat-number{
-display:block;
-font-size:18px;
-font-weight:bold;
-margin-top:7px
+ display:block;
+ font-size:18px;
+ font-weight:bold;
+ margin-top:7px;
 }
 
 .stat-label{
-font-size:12px;
-color:#708391
+ font-size:12px;
+ color:#708391;
 }
 
+
+/* منوی داشبورد */
+
 .menu{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:12px
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:12px;
 }
 
 .menu-button{
-border:0;
-background:#fff;
-color:#102a43;
-border-radius:17px;
-padding:20px 10px;
-font-size:15px;
-box-shadow:0 4px 15px rgba(16,42,67,.06)
+ border:0;
+ background:#fff;
+ color:#102a43;
+ border-radius:17px;
+ padding:20px 10px;
+ font-size:15px;
+ box-shadow:0 4px 15px rgba(16,42,67,.06);
 }
 
 .menu-button div{
-font-size:28px;
-margin-bottom:8px
+ font-size:28px;
+ margin-bottom:8px;
 }
 
-.section{display:none}
-.section.active{display:block}
+
+/* صفحات */
+
+.section{
+ display:none;
+}
+
+.section.active{
+ display:block;
+}
 
 .panel-box{
-background:#fff;
-padding:18px;
-border-radius:18px;
-margin-bottom:15px;
-box-shadow:0 4px 15px rgba(16,42,67,.06)
+ background:#fff;
+ padding:18px;
+ border-radius:18px;
+ margin-bottom:15px;
+ box-shadow:0 4px 15px rgba(16,42,67,.06);
 }
 
+
+/* فرم */
+
 .form-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:12px
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:12px;
 }
 
 .field label{
-display:block;
-font-size:12px;
-color:#52697a;
-margin-bottom:5px
+ display:block;
+ font-size:12px;
+ color:#52697a;
+ margin-bottom:5px;
 }
 
 .field input,
 .field select,
 .field textarea{
-width:100%;
-padding:12px;
-border:1px solid #d5dfe5;
-border-radius:10px;
-outline:none;
-background:#fff
+ width:100%;
+ padding:12px;
+ border:1px solid #d5dfe5;
+ border-radius:10px;
+ outline:none;
+ background:#fff;
 }
 
 .field textarea{
-min-height:85px;
-resize:vertical
+ min-height:85px;
+ resize:vertical;
 }
 
-.full{grid-column:1/-1}
+.full{
+ grid-column:1/-1;
+}
 
 .actions{
-display:flex;
-gap:9px;
-margin-top:15px;
-flex-wrap:wrap
+ display:flex;
+ gap:9px;
+ margin-top:15px;
+ flex-wrap:wrap;
 }
 
 .btn{
-border:0;
-border-radius:10px;
-padding:11px 16px
+ border:0;
+ border-radius:10px;
+ padding:11px 16px;
 }
 
-.primary{background:#102a43;color:#fff}
-.gold{background:#c9a227;color:#fff}
-.light{background:#edf3f6;color:#102a43}
-.danger{background:#a52b2b;color:#fff}
+.primary{
+ background:#102a43;
+ color:#fff;
+}
+
+.gold{
+ background:#c9a227;
+ color:#fff;
+}
+
+.light{
+ background:#edf3f6;
+ color:#102a43;
+}
+
+.danger{
+ background:#a52b2b;
+ color:#fff;
+}
 
 .money-preview{
-font-size:11px;
-color:#52697a;
-line-height:1.9;
-margin-top:5px
+ font-size:11px;
+ color:#52697a;
+ line-height:1.9;
+ margin-top:5px;
 }
 
-.money-preview b{color:#102a43}
+.money-preview b{
+ color:#102a43;
+}
 
 .search{
-width:100%;
-padding:13px;
-border:1px solid #d5dfe5;
-border-radius:11px;
-margin-bottom:12px
+ width:100%;
+ padding:13px;
+ border:1px solid #d5dfe5;
+ border-radius:11px;
+ margin-bottom:12px;
 }
 
-.table-wrap{overflow-x:auto}
+.table-wrap{
+ overflow-x:auto;
+}
 
 table{
-width:100%;
-border-collapse:collapse;
-min-width:700px
+ width:100%;
+ border-collapse:collapse;
+ min-width:700px;
 }
 
 th,td{
-padding:10px 8px;
-border-bottom:1px solid #edf0f2;
-font-size:12px;
-text-align:right
+ padding:10px 8px;
+ border-bottom:1px solid #edf0f2;
+ font-size:12px;
+ text-align:right;
 }
 
 th{
-background:#f7fafb;
-color:#52697a
+ background:#f7fafb;
+ color:#52697a;
 }
 
 .empty{
-text-align:center;
-padding:30px;
-color:#708391
+ text-align:center;
+ padding:30px;
+ color:#708391;
 }
+
 
 /* فاکتور */
 
 .invoice-overlay{
-position:fixed;
-inset:0;
-z-index:100;
-background:rgba(16,42,67,.72);
-overflow:auto;
-padding:18px
+ position:fixed;
+ inset:0;
+ z-index:100;
+ background:rgba(16,42,67,.72);
+ overflow:auto;
+ padding:18px;
 }
 
 .invoice-area{
-max-width:720px;
-margin:15px auto;
-background:#fff;
-border-radius:14px;
-overflow:hidden
+ max-width:720px;
+ margin:15px auto;
+ background:#fff;
+ border-radius:14px;
+ overflow:hidden;
 }
 
 .invoice{
-background:#fff;
-padding:28px;
-color:#102a43
+ background:#fff;
+ padding:28px;
+ color:#102a43;
 }
 
 .invoice-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-border-bottom:3px solid #c9a227;
-padding-bottom:16px;
-margin-bottom:18px
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ border-bottom:3px solid #c9a227;
+ padding-bottom:16px;
+ margin-bottom:18px;
 }
 
 .invoice-logo h1{
-margin:0;
-font-size:31px;
-color:#c9a227
+ margin:0;
+ font-size:31px;
+ color:#c9a227;
 }
 
 .invoice-logo small{
-color:#52697a
+ color:#52697a;
 }
 
 .invoice-number{
-text-align:left;
-font-size:11px;
-line-height:2
+ text-align:left;
+ font-size:11px;
+ line-height:2;
 }
 
 .invoice-info{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:8px
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:8px;
 }
 
 .info-box{
-background:#f4f8fa;
-border-radius:9px;
-padding:10px
+ background:#f4f8fa;
+ border-radius:9px;
+ padding:10px;
 }
 
 .info-box span{
-display:block;
-font-size:10px;
-color:#708391;
-margin-bottom:4px
+ display:block;
+ font-size:10px;
+ color:#708391;
+ margin-bottom:4px;
 }
 
-.info-box b{font-size:12px}
+.info-box b{
+ font-size:12px;
+}
 
 .invoice-table{
-width:100%;
-border-collapse:collapse;
-margin-top:18px
+ width:100%;
+ border-collapse:collapse;
+ margin-top:18px;
 }
 
 .invoice-table th{
-background:#102a43;
-color:#fff;
-padding:10px
+ background:#102a43;
+ color:#fff;
+ padding:10px;
 }
 
 .invoice-table td{
-padding:10px;
-border-bottom:1px solid #e5eaed
+ padding:10px;
+ border-bottom:1px solid #e5eaed;
 }
 
 .total-box{
-margin-top:18px;
-background:#f8f1df;
-border:1px solid #c9a227;
-border-radius:12px;
-padding:15px
+ margin-top:18px;
+ background:#f8f1df;
+ border:1px solid #c9a227;
+ border-radius:12px;
+ padding:15px;
 }
 
 .total-main{
-display:flex;
-justify-content:space-between;
-font-size:17px;
-font-weight:bold
+ display:flex;
+ justify-content:space-between;
+ font-size:17px;
+ font-weight:bold;
 }
 
 .total-toman{
-margin-top:7px;
-font-size:12px;
-color:#52697a
+ margin-top:7px;
+ font-size:12px;
+ color:#52697a;
 }
 
 .words{
-margin-top:10px;
-padding-top:10px;
-border-top:1px solid #d8c88d;
-font-size:12px;
-line-height:2
+ margin-top:10px;
+ padding-top:10px;
+ border-top:1px solid #d8c88d;
+ font-size:12px;
+ line-height:2;
 }
 
 .invoice-footer{
-display:flex;
-justify-content:space-between;
-margin-top:25px;
-padding-top:15px;
-border-top:1px solid #ddd;
-font-size:10px;
-color:#708391
+ display:flex;
+ justify-content:space-between;
+ margin-top:25px;
+ padding-top:15px;
+ border-top:1px solid #ddd;
+ font-size:10px;
+ color:#708391;
 }
 
 .invoice-actions{
-max-width:720px;
-margin:0 auto 20px;
-display:flex;
-gap:8px
+ max-width:720px;
+ margin:0 auto 20px;
+ display:flex;
+ gap:8px;
 }
 
 .invoice-actions button{
-flex:1;
-border:0;
-border-radius:10px;
-padding:13px
+ flex:1;
+ border:0;
+ border-radius:10px;
+ padding:13px;
 }
+
+
+/* چاپ */
 
 @media print{
-body{background:#fff}
-.invoice-overlay{
-position:static;
-background:#fff;
-padding:0
-}
-.invoice-area{
-max-width:none;
-margin:0;
-box-shadow:none
-}
-.invoice-actions{display:none!important}
+
+ body{
+  background:#fff;
+ }
+
+ .invoice-overlay{
+  position:static;
+  background:#fff;
+  padding:0;
+ }
+
+ .invoice-area{
+  max-width:none;
+  margin:0;
+  box-shadow:none;
+ }
+
+ .invoice-actions{
+  display:none!important;
+ }
 }
 
+
+/* موبایل */
+
 @media(max-width:750px){
-.stats{grid-template-columns:repeat(2,1fr)}
-.menu{grid-template-columns:repeat(2,1fr)}
-.form-grid{grid-template-columns:1fr}
-.full{grid-column:auto}
-.invoice{padding:18px}
-.invoice-info{grid-template-columns:1fr}
+
+ .stats{
+  grid-template-columns:repeat(2,1fr);
+ }
+
+ .menu{
+  grid-template-columns:repeat(2,1fr);
+ }
+
+ .form-grid{
+  grid-template-columns:1fr;
+ }
+
+ .full{
+  grid-column:auto;
+ }
+
+ .invoice{
+  padding:18px;
+ }
+
+ .invoice-info{
+  grid-template-columns:1fr;
+ }
+
 }
 
 @media(max-width:430px){
-.container{padding:12px}
-.logo h1{font-size:34px}
+
+ .container{
+  padding:12px;
+ }
+
+ .logo h1{
+  font-size:34px;
+ }
+
 }
+
 </style>
 </head>
 
 <body>
+
 
 <!-- صفحه اصلی -->
 
@@ -473,31 +606,44 @@ box-shadow:none
 <div class="box">
 
 <div class="logo">
+
 <h1>ارز پلاس</h1>
+
 <p>ArzPlusMarket</p>
+
 </div>
 
 <div class="home-title">
+
 سامانه مدیریت و خدمات ارز و طلا
+
 </div>
 
-<button class="main-button" onclick="openLogin()">
+<button
+class="main-button"
+onclick="openLogin()">
+
 🔐 پنل ته حساب | ورود مدیران
+
 </button>
 
 </div>
+
 </div>
 
 
-<!-- ورود -->
+<!-- ورود مدیران -->
 
 <div id="loginPage" class="login hidden">
 
 <div class="box">
 
 <div class="logo">
+
 <h1>ارز پلاس</h1>
+
 <p>پنل ته حساب | ورود مدیران</p>
+
 </div>
 
 <input
@@ -511,17 +657,29 @@ class="input"
 type="password"
 placeholder="رمز عبور">
 
-<button class="login-button" onclick="login()">
+<button
+class="login-button"
+onclick="login()">
+
 ورود مدیران
+
 </button>
 
-<button class="back-button" onclick="backHome()">
+<button
+class="back-button"
+onclick="backHome()">
+
 بازگشت
+
 </button>
 
-<div id="loginError" class="error"></div>
+<div
+id="loginError"
+class="error">
+</div>
 
 </div>
+
 </div>
 
 
@@ -529,17 +687,33 @@ placeholder="رمز عبور">
 
 <div id="app" class="hidden">
 
+
 <header class="topbar">
 
 <div class="brand">
+
 ارز پلاس
-<small>پنل ته حساب | ArzPlusMarket</small>
+
+<small>
+پنل ته حساب | ArzPlusMarket
+</small>
+
 </div>
 
 <div class="user-area">
+
 <span id="userName"></span>
+
 <br>
-<button class="logout" onclick="logout()">خروج</button>
+
+<button
+class="logout"
+onclick="logout()">
+
+خروج
+
+</button>
+
 </div>
 
 </header>
@@ -550,37 +724,88 @@ placeholder="رمز عبور">
 
 <!-- داشبورد -->
 
-<section id="dashboard" class="section active">
+<section
+id="dashboard"
+class="section active">
 
 <div class="title">
+
 <h2>🏠 داشبورد</h2>
-<p>مدیریت اسناد و فاکتورهای ارز پلاس</p>
+
+<p>
+مدیریت اسناد و فاکتورهای ارز پلاس
+</p>
+
 </div>
+
 
 <div class="stats">
 
 <div class="stat">
+
 🧾
-<span id="invoiceCount" class="stat-number">0</span>
-<span class="stat-label">اسناد</span>
+
+<span
+id="invoiceCount"
+class="stat-number">
+0
+</span>
+
+<span class="stat-label">
+اسناد
+</span>
+
 </div>
 
+
 <div class="stat">
+
 👥
-<span id="customerCount" class="stat-number">0</span>
-<span class="stat-label">مشتریان</span>
+
+<span
+id="customerCount"
+class="stat-number">
+0
+</span>
+
+<span class="stat-label">
+مشتریان
+</span>
+
 </div>
 
+
 <div class="stat">
+
 💰
-<span id="totalAmount" class="stat-number">0</span>
-<span class="stat-label">مجموع معاملات ریالی</span>
+
+<span
+id="totalAmount"
+class="stat-number">
+0
+</span>
+
+<span class="stat-label">
+مجموع معاملات ریالی
+</span>
+
 </div>
 
+
 <div class="stat">
+
 📦
-<span id="inventoryCount" class="stat-number">0</span>
-<span class="stat-label">تعداد اقلام</span>
+
+<span
+id="inventoryCount"
+class="stat-number">
+0
+</span>
+
+<span class="stat-label">
+مقدار اقلام
+</span>
+
 </div>
 
 </div>
@@ -588,74 +813,162 @@ placeholder="رمز عبور">
 
 <div class="menu">
 
-<button class="menu-button" onclick="showSection('newInvoice')">
+<button
+class="menu-button"
+onclick="showSection('newInvoice')">
+
 <div>🧾</div>
+
 سند جدید
+
 </button>
 
-<button class="menu-button" onclick="showSection('invoices')">
+
+<button
+class="menu-button"
+onclick="showSection('invoices')">
+
 <div>📂</div>
+
 اسناد و فاکتورها
+
 </button>
 
-<button class="menu-button" onclick="showSection('customers')">
+
+<button
+class="menu-button"
+onclick="showSection('customers')">
+
 <div>👥</div>
+
 مشتریان
+
 </button>
 
-<button class="menu-button" onclick="showSection('accounts')">
+
+<button
+class="menu-button"
+onclick="showSection('accounts')">
+
 <div>💰</div>
+
 حساب و تسویه
+
 </button>
 
-<button class="menu-button" onclick="showSection('inventory')">
+
+<button
+class="menu-button"
+onclick="showSection('inventory')">
+
 <div>📦</div>
+
 موجودی
+
 </button>
 
-<button class="menu-button" onclick="showSection('reports')">
+
+<button
+class="menu-button"
+onclick="showSection('reports')">
+
 <div>📊</div>
+
 گزارشات
+
 </button>
 
 </div>
+
 </section>
 
 
 <!-- سند جدید -->
 
-<section id="newInvoice" class="section">
+<section
+id="newInvoice"
+class="section">
 
 <div class="title">
+
 <h2>🧾 ثبت سند جدید</h2>
-<p>اطلاعات معامله را وارد کنید</p>
+
+<p>
+اطلاعات معامله را وارد کنید
+</p>
+
 </div>
+
+
+<button
+class="back-dashboard"
+onclick="showSection('dashboard')">
+
+↩️ برگشت به داشبورد
+
+</button>
+
 
 <div class="panel-box">
 
 <div class="form-grid">
 
-<div class="field">
-<label>نام مشتری</label>
-<input id="customerName" placeholder="مثلاً علی رضایی">
-</div>
 
 <div class="field">
-<label>شماره تماس</label>
-<input id="customerPhone" placeholder="09xxxxxxxxx">
+
+<label>
+نام مشتری
+</label>
+
+<input
+id="customerName"
+placeholder="مثلاً علی رضایی">
+
 </div>
 
+
 <div class="field">
-<label>نوع معامله</label>
+
+<label>
+شماره تماس
+</label>
+
+<input
+id="customerPhone"
+placeholder="09xxxxxxxxx">
+
+</div>
+
+
+<div class="field">
+
+<label>
+نوع معامله
+</label>
+
 <select id="tradeType">
-<option value="خرید">خرید</option>
-<option value="فروش">فروش</option>
+
+<option value="خرید">
+خرید
+</option>
+
+<option value="فروش">
+فروش
+</option>
+
 </select>
+
 </div>
 
+
 <div class="field">
-<label>نوع کالا</label>
+
+<label>
+نوع کالا
+</label>
+
 <select id="productType">
+
 <option>طلای متفرقه</option>
 <option>طلای آبشده</option>
 <option>نقره</option>
@@ -666,37 +979,82 @@ placeholder="رمز عبور">
 <option>ربع سکه</option>
 <option>نیم سکه</option>
 <option>سایر</option>
+
 </select>
+
 </div>
 
-<div class="field">
-<label>وزن / مقدار</label>
-<input id="quantity" type="number" step="0.001" placeholder="مثلاً 2.350">
-</div>
 
 <div class="field">
-<label>واحد</label>
+
+<label>
+وزن / مقدار
+</label>
+
+<input
+id="quantity"
+type="number"
+step="0.001"
+placeholder="مثلاً 2.350">
+
+</div>
+
+
+<div class="field">
+
+<label>
+واحد
+</label>
+
 <select id="unit">
+
 <option>گرم</option>
 <option>عدد</option>
 <option>دلار</option>
 <option>یورو</option>
 <option>لیر</option>
+
 </select>
+
 </div>
 
-<div class="field">
-<label>قیمت واحد - ریال</label>
-<input id="unitPrice" type="number" inputmode="numeric" placeholder="مثلاً 585000000">
-</div>
 
 <div class="field">
-<label>اجرت / اختلاف - ریال</label>
-<input id="fee" type="number" inputmode="numeric" placeholder="اختیاری">
+
+<label>
+قیمت واحد - ریال
+</label>
+
+<input
+id="unitPrice"
+type="number"
+inputmode="numeric"
+placeholder="مثلاً 585000000">
+
 </div>
+
+
+<div class="field">
+
+<label>
+اجرت / اختلاف - ریال
+</label>
+
+<input
+id="fee"
+type="number"
+inputmode="numeric"
+placeholder="اختیاری">
+
+</div>
+
 
 <div class="field full">
-<label>مبلغ نهایی - ریال</label>
+
+<label>
+مبلغ نهایی - ریال
+</label>
+
 <input
 id="amount"
 type="number"
@@ -704,44 +1062,99 @@ inputmode="numeric"
 placeholder="مبلغ را به ریال وارد کنید"
 oninput="updateMoneyPreview()">
 
-<div id="moneyPreview" class="money-preview"></div>
+<div
+id="moneyPreview"
+class="money-preview">
 </div>
 
+</div>
+
+
 <div class="field">
-<label>وضعیت پرداخت</label>
+
+<label>
+وضعیت پرداخت
+</label>
+
 <select id="paymentStatus">
-<option>تسویه کامل</option>
-<option>تسویه نشده</option>
-<option>بیعانه</option>
-<option>بخشی پرداخت شد</option>
+
+<option>
+تسویه کامل
+</option>
+
+<option>
+تسویه نشده
+</option>
+
+<option>
+بیعانه
+</option>
+
+<option>
+بخشی پرداخت شد
+</option>
+
 </select>
+
 </div>
 
+
 <div class="field">
-<label>شماره پیگیری</label>
-<input id="tracking" placeholder="اختیاری">
+
+<label>
+شماره پیگیری
+</label>
+
+<input
+id="tracking"
+placeholder="اختیاری">
+
 </div>
+
 
 <div class="field full">
-<label>توضیحات</label>
-<textarea id="description" placeholder="توضیحات سند..."></textarea>
+
+<label>
+توضیحات
+</label>
+
+<textarea
+id="description"
+placeholder="توضیحات سند...">
+</textarea>
+
 </div>
+
 
 </div>
 
 
 <div class="actions">
 
-<button class="btn primary" onclick="saveInvoice()">
+<button
+class="btn primary"
+onclick="saveInvoice()">
+
 💾 ثبت سند
+
 </button>
 
-<button class="btn light" onclick="clearForm()">
+
+<button
+class="btn light"
+onclick="clearForm()">
+
 پاک کردن
+
 </button>
 
-<button class="btn light" onclick="showSection('dashboard')">
-بازگشت
+
+<button
+class="btn light"
+onclick="showSection('dashboard')">
+
+↩️ برگشت
+
 </button>
 
 </div>
@@ -753,12 +1166,31 @@ oninput="updateMoneyPreview()">
 
 <!-- اسناد -->
 
-<section id="invoices" class="section">
+<section
+id="invoices"
+class="section">
 
 <div class="title">
-<h2>📂 اسناد و فاکتورها</h2>
-<p>تمام اسناد ثبت‌شده</p>
+
+<h2>
+📂 اسناد و فاکتورها
+</h2>
+
+<p>
+تمام اسناد ثبت‌شده
+</p>
+
 </div>
+
+
+<button
+class="back-dashboard"
+onclick="showSection('dashboard')">
+
+↩️ برگشت به داشبورد
+
+</button>
+
 
 <div class="panel-box">
 
@@ -768,23 +1200,50 @@ class="search"
 placeholder="جست‌وجو بر اساس شماره سند، مشتری یا کالا..."
 oninput="renderInvoices()">
 
+
 <div class="table-wrap">
 
 <table>
 
 <thead>
+
 <tr>
-<th>شماره</th>
-<th>مشتری</th>
-<th>معامله</th>
-<th>کالا</th>
-<th>مبلغ</th>
-<th>تاریخ</th>
-<th>عملیات</th>
+
+<th>
+شماره
+</th>
+
+<th>
+مشتری
+</th>
+
+<th>
+معامله
+</th>
+
+<th>
+کالا
+</th>
+
+<th>
+مبلغ
+</th>
+
+<th>
+تاریخ
+</th>
+
+<th>
+عملیات
+</th>
+
 </tr>
+
 </thead>
 
-<tbody id="invoiceTable"></tbody>
+<tbody
+id="invoiceTable">
+</tbody>
 
 </table>
 
@@ -797,12 +1256,31 @@ oninput="renderInvoices()">
 
 <!-- مشتریان -->
 
-<section id="customers" class="section">
+<section
+id="customers"
+class="section">
 
 <div class="title">
-<h2>👥 مشتریان</h2>
-<p>مشتریان ثبت‌شده از روی اسناد</p>
+
+<h2>
+👥 مشتریان
+</h2>
+
+<p>
+مشتریان ثبت‌شده
+</p>
+
 </div>
+
+
+<button
+class="back-dashboard"
+onclick="showSection('dashboard')">
+
+↩️ برگشت به داشبورد
+
+</button>
+
 
 <div class="panel-box">
 
@@ -811,15 +1289,32 @@ oninput="renderInvoices()">
 <table>
 
 <thead>
+
 <tr>
-<th>نام</th>
-<th>شماره تماس</th>
-<th>تعداد معاملات</th>
-<th>مجموع مبلغ</th>
+
+<th>
+نام
+</th>
+
+<th>
+شماره تماس
+</th>
+
+<th>
+تعداد معاملات
+</th>
+
+<th>
+مجموع مبلغ
+</th>
+
 </tr>
+
 </thead>
 
-<tbody id="customerTable"></tbody>
+<tbody
+id="customerTable">
+</tbody>
 
 </table>
 
@@ -832,16 +1327,37 @@ oninput="renderInvoices()">
 
 <!-- حساب -->
 
-<section id="accounts" class="section">
+<section
+id="accounts"
+class="section">
 
 <div class="title">
-<h2>💰 حساب و تسویه</h2>
-<p>خلاصه وضعیت پرداخت اسناد</p>
+
+<h2>
+💰 حساب و تسویه
+</h2>
+
+<p>
+خلاصه وضعیت پرداخت اسناد
+</p>
+
 </div>
+
+
+<button
+class="back-dashboard"
+onclick="showSection('dashboard')">
+
+↩️ برگشت به داشبورد
+
+</button>
+
 
 <div class="panel-box">
 
-<div id="accountSummary"></div>
+<div
+id="accountSummary">
+</div>
 
 </div>
 
@@ -850,12 +1366,31 @@ oninput="renderInvoices()">
 
 <!-- موجودی -->
 
-<section id="inventory" class="section">
+<section
+id="inventory"
+class="section">
 
 <div class="title">
-<h2>📦 موجودی</h2>
-<p>خلاصه اقلام ثبت‌شده در اسناد</p>
+
+<h2>
+📦 موجودی
+</h2>
+
+<p>
+خلاصه اقلام ثبت‌شده
+</p>
+
 </div>
+
+
+<button
+class="back-dashboard"
+onclick="showSection('dashboard')">
+
+↩️ برگشت به داشبورد
+
+</button>
+
 
 <div class="panel-box">
 
@@ -864,14 +1399,28 @@ oninput="renderInvoices()">
 <table>
 
 <thead>
+
 <tr>
-<th>کالا</th>
-<th>تعداد اسناد</th>
-<th>مجموع مقدار</th>
+
+<th>
+کالا
+</th>
+
+<th>
+تعداد اسناد
+</th>
+
+<th>
+مجموع مقدار
+</th>
+
 </tr>
+
 </thead>
 
-<tbody id="inventoryTable"></tbody>
+<tbody
+id="inventoryTable">
+</tbody>
 
 </table>
 
@@ -884,16 +1433,37 @@ oninput="renderInvoices()">
 
 <!-- گزارشات -->
 
-<section id="reports" class="section">
+<section
+id="reports"
+class="section">
 
 <div class="title">
-<h2>📊 گزارشات</h2>
-<p>خلاصه عملکرد ثبت‌شده</p>
+
+<h2>
+📊 گزارشات
+</h2>
+
+<p>
+خلاصه عملکرد ثبت‌شده
+</p>
+
 </div>
+
+
+<button
+class="back-dashboard"
+onclick="showSection('dashboard')">
+
+↩️ برگشت به داشبورد
+
+</button>
+
 
 <div class="panel-box">
 
-<div id="reportContent"></div>
+<div
+id="reportContent">
+</div>
 
 </div>
 
@@ -904,34 +1474,49 @@ oninput="renderInvoices()">
 </div>
 
 
-<!-- پنجره فاکتور -->
+<!-- فاکتور -->
 
-<div id="invoiceModal" class="invoice-overlay hidden">
+<div
+id="invoiceModal"
+class="invoice-overlay hidden">
+
 
 <div class="invoice-area">
 
-<div id="invoicePrint" class="invoice"></div>
+<div
+id="invoicePrint"
+class="invoice">
+</div>
 
 </div>
+
 
 <div class="invoice-actions">
 
 <button
 class="primary"
 onclick="printInvoice()">
+
 📄 چاپ / ذخیره PDF
+
 </button>
+
 
 <button
 class="gold"
 onclick="saveInvoiceImage()">
+
 📸 ذخیره عکس
+
 </button>
+
 
 <button
 class="light"
 onclick="closeInvoice()">
-بستن
+
+↩️ بستن
+
 </button>
 
 </div>
@@ -941,52 +1526,97 @@ onclick="closeInvoice()">
 
 <script>
 
-/* کاربران مدیر */
 
-const USERS = {
-  "علیرضا":"1234",
-  "مسعود":"5678"
+/* کاربران */
+
+const USERS={
+
+ "علیرضا":"1234",
+ "مسعود":"5678"
+
 };
 
 
-/* اطلاعات */
+let invoices=
+JSON.parse(
+ localStorage.getItem("arzplus_invoices") || "[]"
+);
 
-let invoices =
-JSON.parse(localStorage.getItem("arzplus_invoices") || "[]");
-
-let currentUser = "";
+let currentUser="";
 
 
-/* ابزار */
+/* اعداد */
 
 function formatNumber(number){
-  return Number(number || 0).toLocaleString("fa-IR");
+
+ return Number(number||0)
+ .toLocaleString("fa-IR");
+
 }
 
-function latinNumber(number){
-  return Number(number || 0).toLocaleString("en-US");
-}
 
 function rialToToman(rial){
-  return Math.floor(Number(rial || 0) / 10);
+
+ return Math.floor(
+ Number(rial||0)/10
+ );
+
 }
 
 
-/* تبدیل عدد به حروف فارسی */
+/* حروف فارسی */
 
 const ones=[
-"","یک","دو","سه","چهار","پنج","شش","هفت","هشت","نه",
-"ده","یازده","دوازده","سیزده","چهارده","پانزده","شانزده",
-"هفده","هجده","نوزده"
+"",
+"یک",
+"دو",
+"سه",
+"چهار",
+"پنج",
+"شش",
+"هفت",
+"هشت",
+"نه",
+"ده",
+"یازده",
+"دوازده",
+"سیزده",
+"چهارده",
+"پانزده",
+"شانزده",
+"هفده",
+"هجده",
+"نوزده"
 ];
+
 
 const tens=[
-"","","بیست","سی","چهل","پنجاه","شصت","هفتاد","هشتاد","نود"
+"",
+"",
+"بیست",
+"سی",
+"چهل",
+"پنجاه",
+"شصت",
+"هفتاد",
+"هشتاد",
+"نود"
 ];
 
+
 const hundreds=[
-"","صد","دویست","سیصد","چهارصد","پانصد","ششصد","هفتصد","هشتصد","نهصد"
+"",
+"صد",
+"دویست",
+"سیصد",
+"چهارصد",
+"پانصد",
+"ششصد",
+"هفتصد",
+"هشتصد",
+"نهصد"
 ];
+
 
 const scales=[
 "",
@@ -996,95 +1626,132 @@ const scales=[
 "تریلیون"
 ];
 
+
 function threeDigitsToWords(num){
 
-  num=Number(num);
+ let parts=[];
 
-  let parts=[];
+ let h=Math.floor(num/100);
 
-  let h=Math.floor(num/100);
-  let r=num%100;
+ let r=num%100;
 
-  if(h) parts.push(hundreds[h]);
 
-  if(r){
+ if(h){
+  parts.push(hundreds[h]);
+ }
 
-    if(r<20){
-      parts.push(ones[r]);
-    }else{
 
-      let t=Math.floor(r/10);
-      let o=r%10;
+ if(r){
 
-      if(tens[t]) parts.push(tens[t]);
-      if(o) parts.push(ones[o]);
+  if(r<20){
 
-    }
+   parts.push(ones[r]);
+
+  }else{
+
+   let t=Math.floor(r/10);
+   let o=r%10;
+
+   parts.push(tens[t]);
+
+   if(o){
+    parts.push(ones[o]);
+   }
 
   }
 
-  return parts.join(" و ");
+ }
+
+
+ return parts.join(" و ");
+
 }
+
 
 function numberToWords(num){
 
-  num=Math.floor(Number(num));
+ num=Math.floor(Number(num));
 
-  if(num===0)return "صفر";
+ if(num===0){
+  return "صفر";
+ }
 
-  let parts=[];
-  let scale=0;
+ let parts=[];
+ let scale=0;
 
-  while(num>0){
 
-    let group=num%1000;
+ while(num>0){
 
-    if(group){
+  let group=num%1000;
 
-      let text=threeDigitsToWords(group);
+  if(group){
 
-      if(scales[scale]){
-        text+=" "+scales[scale];
-      }
+   let text=
+   threeDigitsToWords(group);
 
-      parts.unshift(text);
-    }
+   if(scales[scale]){
+    text+=" "+scales[scale];
+   }
 
-    num=Math.floor(num/1000);
-    scale++;
+   parts.unshift(text);
+
   }
 
-  return parts.join(" و ");
+  num=Math.floor(num/1000);
+  scale++;
+
+ }
+
+
+ return parts.join(" و ");
+
 }
 
 
-/* پیش‌نمایش مبلغ */
+/* مبلغ */
 
 function updateMoneyPreview(){
 
-  const rial=Number(
-    document.getElementById("amount").value || 0
-  );
+ const rial=
+ Number(
+  document.getElementById("amount").value||0
+ );
 
-  const toman=rialToToman(rial);
 
-  const preview=document.getElementById("moneyPreview");
+ const toman=
+ rialToToman(rial);
 
-  if(!rial){
 
-    preview.innerHTML="";
-    return;
-  }
+ const preview=
+ document.getElementById("moneyPreview");
 
-  preview.innerHTML=
-  "ریال: <b>"+formatNumber(rial)+"</b><br>"+
-  "تومان: <b>"+formatNumber(toman)+"</b><br>"+
-  "به حروف ریال: <b>"+
-  numberToWords(rial)+
-  " ریال</b><br>"+
-  "به حروف تومان: <b>"+
-  numberToWords(toman)+
-  " تومان</b>";
+
+ if(!rial){
+
+  preview.innerHTML="";
+  return;
+
+ }
+
+
+ preview.innerHTML=
+
+ "ریال: <b>"+
+ formatNumber(rial)+
+ "</b><br>"+
+
+ "تومان: <b>"+
+ formatNumber(toman)+
+ "</b><br>"+
+
+ "به حروف ریال: <b>"+
+ numberToWords(rial)+
+ " ریال</b><br>"+
+
+ "به حروف تومان: <b>"+
+ numberToWords(toman)+
+ " تومان</b>";
+
 }
 
 
@@ -1092,70 +1759,92 @@ function updateMoneyPreview(){
 
 function openLogin(){
 
-  document.getElementById("homePage")
-  .classList.add("hidden");
+ document
+ .getElementById("homePage")
+ .classList.add("hidden");
 
-  document.getElementById("loginPage")
-  .classList.remove("hidden");
+ document
+ .getElementById("loginPage")
+ .classList.remove("hidden");
+
 }
+
 
 function backHome(){
 
-  document.getElementById("loginPage")
-  .classList.add("hidden");
+ document
+ .getElementById("loginPage")
+ .classList.add("hidden");
 
-  document.getElementById("homePage")
-  .classList.remove("hidden");
+ document
+ .getElementById("homePage")
+ .classList.remove("hidden");
 
-  document.getElementById("loginError").innerText="";
 }
+
 
 function login(){
 
-  const user=
-  document.getElementById("username").value.trim();
+ const user=
+ document.getElementById("username").value.trim();
 
-  const pass=
-  document.getElementById("password").value;
+ const pass=
+ document.getElementById("password").value;
 
-  if(USERS[user] && USERS[user]===pass){
 
-    currentUser=user;
+ if(
+  USERS[user] &&
+  USERS[user]===pass
+ ){
 
-    document.getElementById("loginPage")
-    .classList.add("hidden");
+  currentUser=user;
 
-    document.getElementById("app")
-    .classList.remove("hidden");
+  document
+  .getElementById("loginPage")
+  .classList.add("hidden");
 
-    document.getElementById("userName")
-    .innerText=user;
+  document
+  .getElementById("app")
+  .classList.remove("hidden");
 
-    refreshAll();
+  document
+  .getElementById("userName")
+  .innerText=user;
 
-  }else{
+  refreshAll();
 
-    document.getElementById("loginError")
-    .innerText=
-    "نام کاربری یا رمز عبور اشتباه است.";
-  }
+ }else{
+
+  document
+  .getElementById("loginError")
+  .innerText=
+  "نام کاربری یا رمز عبور اشتباه است.";
+
+ }
+
 }
+
 
 function logout(){
 
-  currentUser="";
+ currentUser="";
 
-  document.getElementById("app")
-  .classList.add("hidden");
+ document
+ .getElementById("app")
+ .classList.add("hidden");
 
-  document.getElementById("loginPage")
-  .classList.add("hidden");
+ document
+ .getElementById("homePage")
+ .classList.remove("hidden");
 
-  document.getElementById("homePage")
-  .classList.remove("hidden");
+ document
+ .getElementById("username")
+ .value="";
 
-  document.getElementById("username").value="";
-  document.getElementById("password").value="";
+ document
+ .getElementById("password")
+ .value="";
+
 }
 
 
@@ -1163,19 +1852,22 @@ function logout(){
 
 function showSection(id){
 
-  document
-  .querySelectorAll(".section")
-  .forEach(section=>{
-    section.classList.remove("active");
-  });
+ document
+ .querySelectorAll(".section")
+ .forEach(section=>{
+  section.classList.remove("active");
+ });
 
-  document
-  .getElementById(id)
-  .classList.add("active");
 
-  window.scrollTo(0,0);
+ document
+ .getElementById(id)
+ .classList.add("active");
 
-  refreshAll();
+
+ window.scrollTo(0,0);
+
+ refreshAll();
+
 }
 
 
@@ -1183,24 +1875,33 @@ function showSection(id){
 
 function nextInvoiceNumber(){
 
-  let max=0;
+ let max=0;
 
-  invoices.forEach(item=>{
 
-    const match=
-    String(item.number || "")
-    .match(/AP-(\d+)/);
+ invoices.forEach(item=>{
 
-    if(match){
+  const match=
+  String(item.number||"")
+  .match(/AP-(\d+)/);
 
-      const n=Number(match[1]);
 
-      if(n>max)max=n;
-    }
+  if(match){
 
-  });
+   const n=
+   Number(match[1]);
 
-  return "AP-"+String(max+1).padStart(5,"0");
+   if(n>max){
+    max=n;
+   }
+
+  }
+
+ });
+
+
+ return "AP-"+
+ String(max+1).padStart(5,"0");
+
 }
 
 
@@ -1208,7 +1909,9 @@ function nextInvoiceNumber(){
 
 function getDate(){
 
-  return new Date().toLocaleString("fa-IR");
+ return new Date()
+ .toLocaleString("fa-IR");
+
 }
 
 
@@ -1216,10 +1919,11 @@ function getDate(){
 
 function saveData(){
 
-  localStorage.setItem(
-    "arzplus_invoices",
-    JSON.stringify(invoices)
-  );
+ localStorage.setItem(
+  "arzplus_invoices",
+  JSON.stringify(invoices)
+ );
+
 }
 
 
@@ -1227,104 +1931,139 @@ function saveData(){
 
 function saveInvoice(){
 
-  const customer=
-  document.getElementById("customerName").value.trim();
-
-  const phone=
-  document.getElementById("customerPhone").value.trim();
-
-  const trade=
-  document.getElementById("tradeType").value;
-
-  const product=
-  document.getElementById("productType").value;
-
-  const quantity=
-  document.getElementById("quantity").value;
-
-  const unit=
-  document.getElementById("unit").value;
-
-  const unitPrice=
-  Number(document.getElementById("unitPrice").value || 0);
-
-  const fee=
-  Number(document.getElementById("fee").value || 0);
-
-  const amount=
-  Number(document.getElementById("amount").value || 0);
-
-  const payment=
-  document.getElementById("paymentStatus").value;
-
-  const tracking=
-  document.getElementById("tracking").value.trim();
-
-  const description=
-  document.getElementById("description").value.trim();
+ const customer=
+ document.getElementById("customerName")
+ .value.trim();
 
 
-  if(!customer){
-
-    alert("نام مشتری را وارد کنید.");
-    return;
-  }
-
-  if(!amount || amount<=0){
-
-    alert("مبلغ نهایی را به ریال وارد کنید.");
-    return;
-  }
+ const phone=
+ document.getElementById("customerPhone")
+ .value.trim();
 
 
-  const invoice={
-
-    id:Date.now(),
-
-    number:nextInvoiceNumber(),
-
-    date:getDate(),
-
-    customer:customer,
-
-    phone:phone,
-
-    trade:trade,
-
-    product:product,
-
-    quantity:quantity,
-
-    unit:unit,
-
-    unitPrice:unitPrice,
-
-    fee:fee,
-
-    amount:amount,
-
-    toman:rialToToman(amount),
-
-    payment:payment,
-
-    tracking:tracking,
-
-    description:description,
-
-    user:currentUser
-
-  };
+ const trade=
+ document.getElementById("tradeType")
+ .value;
 
 
-  invoices.push(invoice);
+ const product=
+ document.getElementById("productType")
+ .value;
 
-  saveData();
 
-  clearForm();
+ const quantity=
+ document.getElementById("quantity")
+ .value;
 
-  refreshAll();
 
-  showInvoice(invoice);
+ const unit=
+ document.getElementById("unit")
+ .value;
+
+
+ const unitPrice=
+ Number(
+  document.getElementById("unitPrice")
+  .value||0
+ );
+
+
+ const fee=
+ Number(
+  document.getElementById("fee")
+  .value||0
+ );
+
+
+ const amount=
+ Number(
+  document.getElementById("amount")
+  .value||0
+ );
+
+
+ const payment=
+ document.getElementById("paymentStatus")
+ .value;
+
+
+ const tracking=
+ document.getElementById("tracking")
+ .value.trim();
+
+
+ const description=
+ document.getElementById("description")
+ .value.trim();
+
+
+ if(!customer){
+
+  alert("نام مشتری را وارد کنید.");
+  return;
+
+ }
+
+
+ if(!amount || amount<=0){
+
+  alert(
+   "مبلغ نهایی را به ریال وارد کنید."
+  );
+
+  return;
+
+ }
+
+
+ const invoice={
+
+  id:Date.now(),
+
+  number:nextInvoiceNumber(),
+
+  date:getDate(),
+
+  customer,
+
+  phone,
+
+  trade,
+
+  product,
+
+  quantity,
+
+  unit,
+
+  unitPrice,
+
+  fee,
+
+  amount,
+
+  toman:rialToToman(amount),
+
+  payment,
+
+  tracking,
+
+  description,
+
+  user:currentUser
+
+ };
+
+
+ invoices.push(invoice);
+
+ saveData();
+
+ clearForm();
+
+ refreshAll();
+
+ showInvoice(invoice);
 
 }
 
@@ -1333,139 +2072,200 @@ function saveInvoice(){
 
 function clearForm(){
 
-  [
-   "customerName",
-   "customerPhone",
-   "quantity",
-   "unitPrice",
-   "fee",
-   "amount",
-   "tracking",
-   "description"
-  ].forEach(id=>{
-    document.getElementById(id).value="";
-  });
+ [
 
-  document.getElementById("moneyPreview").innerHTML="";
+ "customerName",
+ "customerPhone",
+ "quantity",
+ "unitPrice",
+ "fee",
+ "amount",
+ "tracking",
+ "description"
+
+ ].forEach(id=>{
+
+  document.getElementById(id).value="";
+
+ });
+
+
+ document
+ .getElementById("moneyPreview")
+ .innerHTML="";
+
 }
 
 
-/* نمایش اسناد */
+/* اسناد */
 
 function renderInvoices(){
 
-  const tbody=
-  document.getElementById("invoiceTable");
+ const tbody=
+ document.getElementById("invoiceTable");
 
-  const search=
+
+ const search=
+ (
+  document.getElementById("searchInvoice")?.value
+  ||""
+ )
+ .trim()
+ .toLowerCase();
+
+
+ let list=
+ invoices.filter(item=>{
+
+  const text=
   (
-   document.getElementById("searchInvoice")?.value
-   ||""
-  ).trim().toLowerCase();
+   item.number+" "+
+   item.customer+" "+
+   item.product
+  )
+  .toLowerCase();
 
 
-  let list=invoices.filter(item=>{
+  return text.includes(search);
 
-    const text=
-    (
-      item.number+" "+
-      item.customer+" "+
-      item.product
-    ).toLowerCase();
-
-    return text.includes(search);
-  });
+ });
 
 
-  list=list.slice().reverse();
+ list=
+ list.slice().reverse();
 
 
-  if(!list.length){
+ if(!list.length){
 
-    tbody.innerHTML=
-    `<tr>
-      <td colspan="7" class="empty">
-      هنوز سندی ثبت نشده است.
-      </td>
-    </tr>`;
-
-    return;
-  }
-
-
-  tbody.innerHTML=
-  list.map(item=>`
+  tbody.innerHTML=`
 
   <tr>
 
-   <td>${item.number}</td>
+  <td
+  colspan="7"
+  class="empty">
 
-   <td>${escapeHtml(item.customer)}</td>
+  هنوز سندی ثبت نشده است.
 
-   <td>${escapeHtml(item.trade)}</td>
-
-   <td>${escapeHtml(item.product)}</td>
-
-   <td>
-   ${formatNumber(item.amount)}
-   ریال
-   </td>
-
-   <td>${item.date}</td>
-
-   <td>
-
-    <button
-     class="btn gold"
-     onclick="showInvoiceById(${item.id})">
-     👁
-    </button>
-
-    <button
-     class="btn danger"
-     onclick="deleteInvoice(${item.id})">
-     🗑
-    </button>
-
-   </td>
+  </td>
 
   </tr>
 
-  `).join("");
+  `;
+
+  return;
+
+ }
+
+
+ tbody.innerHTML=
+ list.map(item=>`
+
+ <tr>
+
+ <td>
+ ${item.number}
+ </td>
+
+ <td>
+ ${escapeHtml(item.customer)}
+ </td>
+
+ <td>
+ ${escapeHtml(item.trade)}
+ </td>
+
+ <td>
+ ${escapeHtml(item.product)}
+ </td>
+
+ <td>
+ ${formatNumber(item.amount)}
+ ریال
+ </td>
+
+ <td>
+ ${item.date}
+ </td>
+
+ <td>
+
+ <button
+ class="btn gold"
+ onclick="showInvoiceById(${item.id})">
+ 👁
+ </button>
+
+ <button
+ class="btn danger"
+ onclick="deleteInvoice(${item.id})">
+ 🗑
+ </button>
+
+ </td>
+
+ </tr>
+
+ `).join("");
+
 }
 
 
-/* حذف سند */
+/* حذف */
 
 function deleteInvoice(id){
 
-  const invoice=
-  invoices.find(item=>item.id===id);
-
-  if(!invoice)return;
+ const invoice=
+ invoices.find(item=>item.id===id);
 
 
-  const ok=
-  confirm(
-   "آیا مطمئن هستید که می‌خواهید این سند را حذف کنید؟\n\n"+
-   "شماره سند: "+invoice.number+"\n"+
-   "مشتری: "+invoice.customer+"\n"+
-   "مبلغ: "+formatNumber(invoice.amount)+" ریال\n\n"+
-   "این عملیات قابل برگشت نیست."
-  );
+ if(!invoice){
+  return;
+ }
 
 
-  if(!ok)return;
+ const ok=
+ confirm(
+
+ "آیا مطمئن هستید که می‌خواهید این سند را حذف کنید؟\n\n"+
+
+ "شماره سند: "+
+ invoice.number+
+ "\n"+
+
+ "مشتری: "+
+ invoice.customer+
+ "\n"+
+
+ "مبلغ: "+
+ formatNumber(invoice.amount)+
+ " ریال\n\n"+
+
+ "این عملیات قابل برگشت نیست."
+
+ );
 
 
-  invoices=
-  invoices.filter(item=>item.id!==id);
+ if(!ok){
+  return;
+ }
 
-  saveData();
 
-  refreshAll();
+ invoices=
+ invoices.filter(
+  item=>item.id!==id
+ );
 
-  alert("سند با موفقیت حذف شد.");
+
+ saveData();
+
+ refreshAll();
+
+
+ alert(
+  "سند با موفقیت حذف شد."
+ );
+
 }
 
 
@@ -1473,64 +2273,97 @@ function deleteInvoice(id){
 
 function renderCustomers(){
 
-  const map={};
-
-  invoices.forEach(item=>{
-
-    const key=item.customer+"|"+item.phone;
-
-    if(!map[key]){
-
-      map[key]={
-        name:item.customer,
-        phone:item.phone,
-        count:0,
-        amount:0
-      };
-
-    }
-
-    map[key].count++;
-    map[key].amount+=Number(item.amount||0);
-
-  });
+ const map={};
 
 
-  const rows=Object.values(map);
+ invoices.forEach(item=>{
 
-  const tbody=
-  document.getElementById("customerTable");
+  const key=
+  item.customer+"|"+item.phone;
 
 
-  if(!rows.length){
+  if(!map[key]){
 
-    tbody.innerHTML=
-    `<tr>
-      <td colspan="4" class="empty">
-      هنوز مشتری ثبت نشده است.
-      </td>
-    </tr>`;
+   map[key]={
 
-    return;
+    name:item.customer,
+
+    phone:item.phone,
+
+    count:0,
+
+    amount:0
+
+   };
+
   }
 
 
-  tbody.innerHTML=
-  rows.map(item=>`
+  map[key].count++;
+
+  map[key].amount+=
+  Number(item.amount||0);
+
+ });
+
+
+ const rows=
+ Object.values(map);
+
+
+ const tbody=
+ document.getElementById("customerTable");
+
+
+ if(!rows.length){
+
+  tbody.innerHTML=`
 
   <tr>
 
-   <td>${escapeHtml(item.name)}</td>
+  <td
+  colspan="4"
+  class="empty">
 
-   <td>${escapeHtml(item.phone || "-")}</td>
+  هنوز مشتری ثبت نشده است.
 
-   <td>${formatNumber(item.count)}</td>
-
-   <td>${formatNumber(item.amount)} ریال</td>
+  </td>
 
   </tr>
 
-  `).join("");
+  `;
+
+  return;
+
+ }
+
+
+ tbody.innerHTML=
+ rows.map(item=>`
+
+ <tr>
+
+ <td>
+ ${escapeHtml(item.name)}
+ </td>
+
+ <td>
+ ${escapeHtml(item.phone||"-")}
+ </td>
+
+ <td>
+ ${formatNumber(item.count)}
+ </td>
+
+ <td>
+ ${formatNumber(item.amount)}
+ ریال
+ </td>
+
+ </tr>
+
+ `).join("");
+
 }
 
 
@@ -1538,54 +2371,86 @@ function renderCustomers(){
 
 function renderAccounts(){
 
-  let total=0;
-  let paid=0;
-  let unpaid=0;
-
-  invoices.forEach(item=>{
-
-    total+=Number(item.amount||0);
-
-    if(item.payment==="تسویه کامل"){
-      paid+=Number(item.amount||0);
-    }else{
-      unpaid+=Number(item.amount||0);
-    }
-
-  });
+ let total=0;
+ let paid=0;
+ let unpaid=0;
 
 
-  document.getElementById("accountSummary").innerHTML=`
+ invoices.forEach(item=>{
 
-  <div class="stats">
+  total+=
+  Number(item.amount||0);
 
-   <div class="stat">
-    کل معاملات
-    <span class="stat-number">
-    ${formatNumber(total)}
-    ریال
-    </span>
-   </div>
 
-   <div class="stat">
-    تسویه شده
-    <span class="stat-number">
-    ${formatNumber(paid)}
-    ریال
-    </span>
-   </div>
+  if(
+   item.payment===
+   "تسویه کامل"
+  ){
 
-   <div class="stat">
-    تسویه نشده
-    <span class="stat-number">
-    ${formatNumber(unpaid)}
-    ریال
-    </span>
-   </div>
+   paid+=
+   Number(item.amount||0);
 
-  </div>
+  }else{
 
-  `;
+   unpaid+=
+   Number(item.amount||0);
+
+  }
+
+ });
+
+
+ document
+ .getElementById("accountSummary")
+ .innerHTML=`
+
+ <div class="stats">
+
+ <div class="stat">
+
+ کل معاملات
+
+ <span class="stat-number">
+
+ ${formatNumber(total)}
+ ریال
+
+ </span>
+
+ </div>
+
+
+ <div class="stat">
+
+ تسویه شده
+
+ <span class="stat-number">
+
+ ${formatNumber(paid)}
+ ریال
+
+ </span>
+
+ </div>
+
+
+ <div class="stat">
+
+ تسویه نشده
+
+ <span class="stat-number">
+
+ ${formatNumber(unpaid)}
+ ریال
+
+ </span>
+
+ </div>
+
+ </div>
+
+ `;
+
 }
 
 
@@ -1593,60 +2458,85 @@ function renderAccounts(){
 
 function renderInventory(){
 
-  const map={};
-
-  invoices.forEach(item=>{
-
-    if(!map[item.product]){
-
-      map[item.product]={
-        count:0,
-        quantity:0
-      };
-
-    }
-
-    map[item.product].count++;
-
-    map[item.product].quantity+=
-    Number(item.quantity||0);
-
-  });
+ const map={};
 
 
-  const rows=Object.entries(map);
+ invoices.forEach(item=>{
 
-  const tbody=
-  document.getElementById("inventoryTable");
+  if(!map[item.product]){
 
+   map[item.product]={
 
-  if(!rows.length){
+    count:0,
 
-    tbody.innerHTML=
-    `<tr>
-      <td colspan="3" class="empty">
-      هنوز اطلاعاتی ثبت نشده است.
-      </td>
-    </tr>`;
+    quantity:0
 
-    return;
+   };
+
   }
 
 
-  tbody.innerHTML=
-  rows.map(([name,item])=>`
+  map[item.product].count++;
+
+
+  map[item.product].quantity+=
+  Number(item.quantity||0);
+
+ });
+
+
+ const rows=
+ Object.entries(map);
+
+
+ const tbody=
+ document.getElementById("inventoryTable");
+
+
+ if(!rows.length){
+
+  tbody.innerHTML=`
 
   <tr>
 
-   <td>${escapeHtml(name)}</td>
+  <td
+  colspan="3"
+  class="empty">
 
-   <td>${formatNumber(item.count)}</td>
+  هنوز اطلاعاتی ثبت نشده است.
 
-   <td>${formatNumber(item.quantity)}</td>
+  </td>
 
   </tr>
 
-  `).join("");
+  `;
+
+  return;
+
+ }
+
+
+ tbody.innerHTML=
+ rows.map(([name,item])=>`
+
+ <tr>
+
+ <td>
+ ${escapeHtml(name)}
+ </td>
+
+ <td>
+ ${formatNumber(item.count)}
+ </td>
+
+ <td>
+ ${formatNumber(item.quantity)}
+ </td>
+
+ </tr>
+
+ `).join("");
+
 }
 
 
@@ -1654,61 +2544,104 @@ function renderInventory(){
 
 function renderReports(){
 
-  const total=invoices.reduce(
-    (sum,item)=>sum+Number(item.amount||0),
-    0
-  );
-
-  const buys=invoices.filter(
-    item=>item.trade==="خرید"
-  ).length;
-
-  const sells=invoices.filter(
-    item=>item.trade==="فروش"
-  ).length;
+ const total=
+ invoices.reduce(
+  (sum,item)=>
+  sum+Number(item.amount||0),
+  0
+ );
 
 
-  document.getElementById("reportContent").innerHTML=`
+ const buys=
+ invoices.filter(
+  item=>item.trade==="خرید"
+ ).length;
 
-  <div class="stats">
 
-   <div class="stat">
-    تعداد کل اسناد
-    <span class="stat-number">
-    ${formatNumber(invoices.length)}
-    </span>
-   </div>
+ const sells=
+ invoices.filter(
+  item=>item.trade==="فروش"
+ ).length;
 
-   <div class="stat">
-    خرید
-    <span class="stat-number">
-    ${formatNumber(buys)}
-    </span>
-   </div>
 
-   <div class="stat">
-    فروش
-    <span class="stat-number">
-    ${formatNumber(sells)}
-    </span>
-   </div>
+ document
+ .getElementById("reportContent")
+ .innerHTML=`
 
-   <div class="stat">
-    ارزش کل
-    <span class="stat-number">
-    ${formatNumber(total)}
-    ریال
-    </span>
-   </div>
+ <div class="stats">
 
-  </div>
+ <div class="stat">
 
-  <p>
-  ارزش کل به تومان:
-  <b>${formatNumber(rialToToman(total))} تومان</b>
-  </p>
+ تعداد کل اسناد
 
-  `;
+ <span class="stat-number">
+
+ ${formatNumber(invoices.length)}
+
+ </span>
+
+ </div>
+
+
+ <div class="stat">
+
+ خرید
+
+ <span class="stat-number">
+
+ ${formatNumber(buys)}
+
+ </span>
+
+ </div>
+
+
+ <div class="stat">
+
+ فروش
+
+ <span class="stat-number">
+
+ ${formatNumber(sells)}
+
+ </span>
+
+ </div>
+
+
+ <div class="stat">
+
+ ارزش کل
+
+ <span class="stat-number">
+
+ ${formatNumber(total)}
+ ریال
+
+ </span>
+
+ </div>
+
+ </div>
+
+
+ <p>
+
+ ارزش کل به تومان:
+
+ <b>
+
+ ${formatNumber(
+   rialToToman(total)
+ )}
+ تومان
+
+ </b>
+
+ </p>
+
+ `;
+
 }
 
 
@@ -1716,268 +2649,434 @@ function renderReports(){
 
 function showInvoiceById(id){
 
-  const item=
-  invoices.find(x=>x.id===id);
+ const item=
+ invoices.find(
+  x=>x.id===id
+ );
 
-  if(item)showInvoice(item);
+
+ if(item){
+  showInvoice(item);
+ }
+
 }
 
 
 function showInvoice(item){
 
-  const invoice=
-  document.getElementById("invoicePrint");
+ const invoice=
+ document.getElementById(
+  "invoicePrint"
+ );
 
 
-  invoice.innerHTML=`
+ invoice.innerHTML=`
 
-  <div class="invoice-header">
+ <div class="invoice-header">
 
-   <div class="invoice-logo">
-    <h1>ارز پلاس</h1>
-    <small>ArzPlusMarket</small>
-   </div>
+ <div class="invoice-logo">
 
-   <div class="invoice-number">
+ <h1>
+ ارز پلاس
+ </h1>
 
-    <b>سند معامله</b><br>
+ <small>
+ ArzPlusMarket
+ </small>
 
-    شماره:
-    ${item.number}<br>
+ </div>
 
-    تاریخ:
-    ${item.date}
 
-   </div>
+ <div class="invoice-number">
 
-  </div>
+ <b>
+ سند معامله
+ </b>
 
+ <br>
 
-  <div class="invoice-info">
+ شماره:
+ ${item.number}
 
-   <div class="info-box">
-    <span>نام مشتری</span>
-    <b>${escapeHtml(item.customer)}</b>
-   </div>
+ <br>
 
-   <div class="info-box">
-    <span>شماره تماس</span>
-    <b>${escapeHtml(item.phone || "-")}</b>
-   </div>
+ تاریخ:
+ ${item.date}
 
-   <div class="info-box">
-    <span>نوع معامله</span>
-    <b>${escapeHtml(item.trade)}</b>
-   </div>
+ </div>
 
-   <div class="info-box">
-    <span>ثبت‌کننده</span>
-    <b>${escapeHtml(item.user)}</b>
-   </div>
+ </div>
 
-  </div>
 
+ <div class="invoice-info">
 
-  <table class="invoice-table">
 
-   <thead>
+ <div class="info-box">
 
-    <tr>
-     <th>کالا</th>
-     <th>مقدار</th>
-     <th>قیمت واحد</th>
-     <th>اجرت/اختلاف</th>
-    </tr>
+ <span>
+ نام مشتری
+ </span>
 
-   </thead>
+ <b>
+ ${escapeHtml(item.customer)}
+ </b>
 
-   <tbody>
+ </div>
 
-    <tr>
 
-     <td>${escapeHtml(item.product)}</td>
+ <div class="info-box">
 
-     <td>
-     ${formatNumber(item.quantity)}
-     ${escapeHtml(item.unit)}
-     </td>
+ <span>
+ شماره تماس
+ </span>
 
-     <td>
-     ${formatNumber(item.unitPrice)}
-     ریال
-     </td>
+ <b>
+ ${escapeHtml(item.phone||"-")}
+ </b>
 
-     <td>
-     ${formatNumber(item.fee)}
-     ریال
-     </td>
+ </div>
 
-    </tr>
 
-   </tbody>
+ <div class="info-box">
 
-  </table>
+ <span>
+ نوع معامله
+ </span>
 
+ <b>
+ ${escapeHtml(item.trade)}
+ </b>
 
-  <div class="total-box">
+ </div>
 
-   <div class="total-main">
 
-    <span>مبلغ نهایی</span>
+ <div class="info-box">
 
-    <span>
-    ${formatNumber(item.amount)}
-    ریال
-    </span>
+ <span>
+ ثبت‌کننده
+ </span>
 
-   </div>
+ <b>
+ ${escapeHtml(item.user)}
+ </b>
 
-   <div class="total-toman">
+ </div>
 
-    معادل:
-    <b>
-    ${formatNumber(item.toman)}
-    تومان
-    </b>
 
-   </div>
+ </div>
 
 
-   <div class="words">
+ <table class="invoice-table">
 
-    <b>به حروف:</b><br>
+ <thead>
 
-    ${numberToWords(item.amount)}
-    ریال
+ <tr>
 
-    <br>
+ <th>
+ کالا
+ </th>
 
-    <b>به حروف تومان:</b>
+ <th>
+ مقدار
+ </th>
 
-    ${numberToWords(item.toman)}
-    تومان
+ <th>
+ قیمت واحد
+ </th>
 
-   </div>
+ <th>
+ اجرت/اختلاف
+ </th>
 
-  </div>
+ </tr>
 
+ </thead>
 
-  <div class="invoice-info" style="margin-top:12px">
 
-   <div class="info-box">
+ <tbody>
 
-    <span>وضعیت پرداخت</span>
+ <tr>
 
-    <b>${escapeHtml(item.payment)}</b>
+ <td>
+ ${escapeHtml(item.product)}
+ </td>
 
-   </div>
+ <td>
+ ${formatNumber(item.quantity)}
+ ${escapeHtml(item.unit)}
+ </td>
 
-   <div class="info-box">
+ <td>
+ ${formatNumber(item.unitPrice)}
+ ریال
+ </td>
 
-    <span>شماره پیگیری</span>
+ <td>
+ ${formatNumber(item.fee)}
+ ریال
+ </td>
 
-    <b>${escapeHtml(item.tracking || "-")}</b>
+ </tr>
 
-   </div>
+ </tbody>
 
-  </div>
+ </table>
 
 
-  <div class="info-box" style="margin-top:8px">
+ <div class="total-box">
 
-   <span>توضیحات</span>
+ <div class="total-main">
 
-   <b>${escapeHtml(item.description || "-")}</b>
+ <span>
+ مبلغ نهایی
+ </span>
 
-  </div>
+ <span>
 
+ ${formatNumber(item.amount)}
+ ریال
 
-  <div class="invoice-footer">
+ </span>
 
-   <span>ارز پلاس | ArzPlusMarket</span>
+ </div>
 
-   <span>مهر و امضا</span>
 
-  </div>
+ <div class="total-toman">
 
-  `;
+ معادل:
 
+ <b>
 
-  document
-  .getElementById("invoiceModal")
-  .classList.remove("hidden");
+ ${formatNumber(item.toman)}
+ تومان
+
+ </b>
+
+ </div>
+
+
+ <div class="words">
+
+ <b>
+ به حروف:
+ </b>
+
+ <br>
+
+ ${numberToWords(item.amount)}
+ ریال
+
+ <br>
+
+ <b>
+ به حروف تومان:
+ </b>
+
+ ${numberToWords(item.toman)}
+ تومان
+
+ </div>
+
+ </div>
+
+
+ <div
+ class="invoice-info"
+ style="margin-top:12px">
+
+
+ <div class="info-box">
+
+ <span>
+ وضعیت پرداخت
+ </span>
+
+ <b>
+ ${escapeHtml(item.payment)}
+ </b>
+
+ </div>
+
+
+ <div class="info-box">
+
+ <span>
+ شماره پیگیری
+ </span>
+
+ <b>
+ ${escapeHtml(item.tracking||"-")}
+ </b>
+
+ </div>
+
+ </div>
+
+
+ <div
+ class="info-box"
+ style="margin-top:8px">
+
+ <span>
+ توضیحات
+ </span>
+
+ <b>
+ ${escapeHtml(item.description||"-")}
+ </b>
+
+ </div>
+
+
+ <div class="invoice-footer">
+
+ <span>
+ ارز پلاس | ArzPlusMarket
+ </span>
+
+ <span>
+ مهر و امضا
+ </span>
+
+ </div>
+
+ `;
+
+
+ document
+ .getElementById("invoiceModal")
+ .classList.remove("hidden");
+
 }
 
+
+/* بستن فاکتور */
 
 function closeInvoice(){
 
-  document
-  .getElementById("invoiceModal")
-  .classList.add("hidden");
+ document
+ .getElementById("invoiceModal")
+ .classList.add("hidden");
+
 }
 
 
-/* چاپ و PDF */
+/* PDF */
 
 function printInvoice(){
 
-  window.print();
+ window.print();
+
 }
 
 
-/* ذخیره عکس */
+/* عکس فاکتور */
 
 async function saveInvoiceImage(){
 
-  /*
-   اگر مرورگر html2canvas داشته باشد،
-   تصویر فاکتور ساخته می‌شود.
-  */
-
-  if(typeof html2canvas==="undefined"){
-
-    alert(
-      "برای ذخیره مستقیم عکس، کتابخانه تصویر هنوز به سایت اضافه نشده است.\n"+
-      "فعلاً از گزینه چاپ و سپس Save as PDF استفاده کنید."
-    );
-
-    return;
-  }
+ const invoice=
+ document.getElementById(
+  "invoicePrint"
+ );
 
 
-  const element=
-  document.getElementById("invoicePrint");
+ if(!invoice){
+
+  alert(
+   "فاکتور پیدا نشد."
+  );
+
+  return;
+
+ }
+
+
+ if(
+  typeof html2canvas===
+  "undefined"
+ ){
+
+  alert(
+   "کتابخانه ذخیره عکس بارگذاری نشده است. اینترنت را بررسی کنید."
+  );
+
+  return;
+
+ }
+
+
+ try{
+
 
   const canvas=
-  await html2canvas(element,{
+  await html2canvas(
+   invoice,
+   {
     scale:2,
-    backgroundColor:"#ffffff"
-  });
+    backgroundColor:"#ffffff",
+    useCORS:true,
+    logging:false
+   }
+  );
+
+
+  const image=
+  canvas.toDataURL(
+   "image/png"
+  );
 
 
   const link=
   document.createElement("a");
 
-  link.download=
-  "ArzPlus-Invoice.png";
 
-  link.href=
-  canvas.toDataURL("image/png");
+  link.href=image;
+
+
+  link.download=
+  "ArzPlus-Invoice-"+
+  Date.now()+
+  ".png";
+
+
+  document
+  .body
+  .appendChild(link);
+
 
   link.click();
+
+
+  document
+  .body
+  .removeChild(link);
+
+
+ }catch(error){
+
+  console.error(error);
+
+
+  alert(
+   "ذخیره عکس انجام نشد. صفحه را رفرش کنید و دوباره امتحان کنید."
+  );
+
+ }
+
 }
 
 
-/* امنیت نمایش متن */
+/* جلوگیری از ورود کد HTML */
 
 function escapeHtml(value){
 
-  return String(value ?? "")
-  .replace(/&/g,"&amp;")
-  .replace(/</g,"&lt;")
-  .replace(/>/g,"&gt;")
-  .replace(/"/g,"&quot;")
-  .replace(/'/g,"&#039;");
+ return String(value??"")
+ .replace(/&/g,"&amp;")
+ .replace(/</g,"&lt;")
+ .replace(/>/g,"&gt;")
+ .replace(/"/g,"&quot;")
+ .replace(/'/g,"&#039;");
+
 }
 
 
@@ -1985,52 +3084,64 @@ function escapeHtml(value){
 
 function refreshAll(){
 
-  const total=
+ const total=
+ invoices.reduce(
+  (sum,item)=>
+  sum+Number(item.amount||0),
+  0
+ );
+
+
+ document
+ .getElementById("invoiceCount")
+ .innerText=
+ formatNumber(
+  invoices.length
+ );
+
+
+ const customers=
+ new Set(
+  invoices.map(
+   item=>item.customer
+  )
+ );
+
+
+ document
+ .getElementById("customerCount")
+ .innerText=
+ formatNumber(
+  customers.size
+ );
+
+
+ document
+ .getElementById("totalAmount")
+ .innerText=
+ formatNumber(total);
+
+
+ document
+ .getElementById("inventoryCount")
+ .innerText=
+ formatNumber(
   invoices.reduce(
-    (sum,item)=>sum+Number(item.amount||0),
-    0
-  );
+   (sum,item)=>
+   sum+Number(item.quantity||0),
+   0
+  )
+ );
 
 
-  document.getElementById("invoiceCount")
-  .innerText=
-  formatNumber(invoices.length);
+ renderInvoices();
+ renderCustomers();
+ renderAccounts();
+ renderInventory();
+ renderReports();
 
-
-  const customers=
-  new Set(
-    invoices.map(item=>item.customer)
-  );
-
-  document.getElementById("customerCount")
-  .innerText=
-  formatNumber(customers.size);
-
-
-  document.getElementById("totalAmount")
-  .innerText=
-  formatNumber(total);
-
-
-  document.getElementById("inventoryCount")
-  .innerText=
-  formatNumber(
-    invoices.reduce(
-      (sum,item)=>sum+Number(item.quantity||0),
-      0
-    )
-  );
-
-
-  renderInvoices();
-  renderCustomers();
-  renderAccounts();
-  renderInventory();
-  renderReports();
 }
 
-
-/* شروع */
 
 refreshAll();
 
