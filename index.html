@@ -1,345 +1,1257 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#102A43">
+<title>ارز پلاس | پنل مدیریت</title>
 
-  <title>ارز پلاس | ArzPlusMarket</title>
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Tahoma,Arial,sans-serif;
+  background:#eef5f8;
+  color:#102a43
+}
+button,input,select,textarea{font-family:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+/* LOGIN */
+#login{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  background:linear-gradient(135deg,#dceaf2,#f8f1df)
+}
+.login-box{
+  width:100%;
+  max-width:410px;
+  background:white;
+  border-radius:24px;
+  padding:30px 24px;
+  box-shadow:0 15px 45px rgba(16,42,67,.15)
+}
+.logo{
+  text-align:center;
+  margin-bottom:25px
+}
+.logo h1{
+  margin:0;
+  color:#c9a227;
+  font-size:32px
+}
+.logo span{
+  color:#102a43;
+  font-size:14px
+}
+.login-box h2{
+  text-align:center;
+  font-size:20px
+}
+.input{
+  width:100%;
+  border:1px solid #d7e0e6;
+  border-radius:12px;
+  padding:14px;
+  margin:7px 0;
+  font-size:15px;
+  outline:none
+}
+.input:focus{border-color:#c9a227}
+.primary{
+  width:100%;
+  border:0;
+  border-radius:12px;
+  padding:14px;
+  background:#102a43;
+  color:white;
+  font-size:16px;
+  margin-top:10px
+}
+.login-error{
+  color:#b42318;
+  text-align:center;
+  margin-top:12px;
+  font-size:13px
+}
 
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+/* APP */
+#app{min-height:100vh}
+.topbar{
+  background:#102a43;
+  color:white;
+  padding:14px 18px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:20
+}
+.top-title{
+  font-weight:bold;
+  font-size:18px
+}
+.top-title small{
+  display:block;
+  font-size:10px;
+  color:#dceaf2;
+  margin-top:3px
+}
+.user{
+  font-size:12px;
+  text-align:left
+}
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:18px
+}
+.page-title{
+  margin:5px 0 18px
+}
+.page-title h2{
+  margin:0 0 5px
+}
+.page-title p{
+  margin:0;
+  color:#667b8d;
+  font-size:13px
+}
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: linear-gradient(135deg, #dceaf2, #f8f1df);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #102a43;
-    }
+/* CARDS */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-bottom:18px
+}
+.stat{
+  background:white;
+  border-radius:17px;
+  padding:17px;
+  box-shadow:0 4px 15px rgba(16,42,67,.06)
+}
+.stat .icon{font-size:24px}
+.stat strong{
+  display:block;
+  margin-top:8px;
+  font-size:19px
+}
+.stat span{
+  color:#718493;
+  font-size:12px
+}
 
-    .container {
-      width: 92%;
-      max-width: 430px;
-    }
+/* MENU */
+.menu{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px
+}
+.menu-btn{
+  border:0;
+  background:white;
+  border-radius:17px;
+  padding:20px 12px;
+  text-align:center;
+  color:#102a43;
+  box-shadow:0 4px 15px rgba(16,42,67,.06);
+  font-size:15px
+}
+.menu-btn div{
+  font-size:28px;
+  margin-bottom:8px
+}
+.menu-btn:hover{transform:translateY(-1px)}
 
-    .logo {
-      text-align: center;
-      margin-bottom: 25px;
-    }
+/* SECTIONS */
+.section{
+  display:none
+}
+.section.active{
+  display:block
+}
+.panel{
+  background:white;
+  border-radius:18px;
+  padding:18px;
+  box-shadow:0 4px 15px rgba(16,42,67,.06);
+  margin-bottom:15px
+}
+.panel h3{
+  margin-top:0
+}
 
-    .logo h1 {
-      margin: 0;
-      font-size: 32px;
-      color: #c9a227;
-    }
+/* FORM */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px
+}
+.field label{
+  display:block;
+  font-size:12px;
+  margin-bottom:5px;
+  color:#52697a
+}
+.field input,
+.field select,
+.field textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid #d7e0e6;
+  border-radius:10px;
+  outline:none;
+  background:white
+}
+.field textarea{
+  min-height:90px;
+  resize:vertical
+}
+.full{grid-column:1/-1}
+.form-buttons{
+  display:flex;
+  gap:10px;
+  margin-top:15px
+}
+.btn{
+  border:0;
+  border-radius:10px;
+  padding:12px 18px
+}
+.btn-primary{
+  background:#102a43;
+  color:white
+}
+.btn-gold{
+  background:#c9a227;
+  color:white
+}
+.btn-light{
+  background:#edf3f6;
+  color:#102a43
+}
+.btn-danger{
+  background:#a52b2b;
+  color:white
+}
 
-    .logo p {
-      margin-top: 8px;
-      color: #102a43;
-      font-size: 14px;
-    }
+/* TABLE */
+.table-wrap{
+  overflow-x:auto
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:650px
+}
+th,td{
+  padding:11px 9px;
+  border-bottom:1px solid #edf0f2;
+  text-align:right;
+  font-size:13px
+}
+th{
+  color:#52697a;
+  background:#f7fafb
+}
+.badge{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:20px;
+  background:#e9f6ee;
+  color:#217346;
+  font-size:11px
+}
 
-    .card {
-      background: rgba(255,255,255,0.94);
-      border-radius: 22px;
-      padding: 25px;
-      box-shadow: 0 10px 35px rgba(16,42,67,0.15);
-    }
+/* SEARCH */
+.search{
+  width:100%;
+  padding:13px;
+  border:1px solid #d7e0e6;
+  border-radius:11px;
+  margin-bottom:12px
+}
 
-    h2 {
-      text-align: center;
-      margin-top: 0;
-    }
+/* MOBILE */
+@media(max-width:750px){
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .menu{grid-template-columns:repeat(2,1fr)}
+  .grid{grid-template-columns:1fr}
+  .full{grid-column:auto}
+}
+@media(max-width:430px){
+  .container{padding:12px}
+  .cards{gap:8px}
+  .stat{padding:13px}
+  .stat strong{font-size:15px}
+  .menu{gap:8px}
+  .menu-btn{padding:16px 8px}
+}
 
-    input {
-      width: 100%;
-      padding: 14px;
-      margin: 8px 0;
-      border: 1px solid #d5dce2;
-      border-radius: 12px;
-      font-size: 16px;
-      direction: ltr;
-    }
-
-    button {
-      width: 100%;
-      padding: 14px;
-      margin-top: 12px;
-      border: none;
-      border-radius: 12px;
-      background: #102a43;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      opacity: 0.9;
-    }
-
-    .error {
-      color: #b42318;
-      text-align: center;
-      margin-top: 12px;
-      font-size: 14px;
-    }
-
-    .dashboard {
-      display: none;
-    }
-
-    .welcome {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .menu {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .menu button {
-      margin: 0;
-      background: #f8f1df;
-      color: #102a43;
-      border: 1px solid #c9a227;
-    }
-
-    .logout {
-      background: #9b2c2c !important;
-      color: white !important;
-      border: none !important;
-      margin-top: 18px !important;
-    }
-
-    .loading {
-      text-align: center;
-      margin-top: 10px;
-      display: none;
-    }
-  </style>
+/* PRINT */
+@media print{
+  .topbar,.no-print{display:none!important}
+  body{background:white}
+  .container{max-width:none}
+}
+</style>
 </head>
 
 <body>
 
-<div class="container">
+<!-- ================= LOGIN ================= -->
 
-  <!-- LOGIN -->
-  <div id="loginPage">
+<div id="login">
 
-    <div class="logo">
-      <h1>ارز پلاس</h1>
-      <p>ArzPlusMarket</p>
-    </div>
-
-    <div class="card">
-
-      <h2>ورود به پنل</h2>
-
-      <input
-        id="email"
-        type="email"
-        placeholder="ایمیل"
-        autocomplete="username"
-      >
-
-      <input
-        id="password"
-        type="password"
-        placeholder="رمز عبور"
-        autocomplete="current-password"
-      >
-
-      <button onclick="login()">ورود</button>
-
-      <div id="loading" class="loading">
-        در حال ورود...
-      </div>
-
-      <div id="error" class="error"></div>
-
-    </div>
-  </div>
-
-
-  <!-- DASHBOARD -->
-  <div id="dashboard" class="dashboard">
+  <div class="login-box">
 
     <div class="logo">
       <h1>ارز پلاس</h1>
-      <p>ArzPlusMarket</p>
+      <span>ArzPlusMarket</span>
     </div>
 
-    <div class="card">
+    <h2>ورود به پنل</h2>
 
-      <div class="welcome">
-        <h2>🏠 داشبورد</h2>
-        <p id="userEmail"></p>
-      </div>
+    <input id="loginUser"
+           class="input"
+           type="text"
+           placeholder="نام کاربری">
 
-      <div class="menu">
+    <input id="loginPass"
+           class="input"
+           type="password"
+           placeholder="رمز عبور">
 
-        <button onclick="comingSoon('سند جدید')">
-          🧾 سند جدید
-        </button>
+    <button class="primary" onclick="login()">
+      ورود
+    </button>
 
-        <button onclick="comingSoon('اسناد و فاکتورها')">
-          📂 اسناد
-        </button>
+    <div id="loginError" class="login-error"></div>
 
-        <button onclick="comingSoon('مشتریان')">
-          👥 مشتریان
-        </button>
-
-        <button onclick="comingSoon('حساب و تسویه')">
-          💰 حساب‌ها
-        </button>
-
-        <button onclick="comingSoon('موجودی')">
-          📦 موجودی
-        </button>
-
-        <button onclick="comingSoon('گزارشات')">
-          📊 گزارشات
-        </button>
-
-      </div>
-
-      <button class="logout" onclick="logout()">
-        خروج از حساب
-      </button>
-
-    </div>
   </div>
 
 </div>
 
 
+<!-- ================= APP ================= -->
+
+<div id="app" class="hidden">
+
+<header class="topbar">
+  <div class="top-title">
+    ارز پلاس
+    <small>ArzPlusMarket | پنل مدیریت</small>
+  </div>
+
+  <div class="user">
+    <span id="currentUser"></span>
+    <br>
+    <button
+      onclick="logout()"
+      style="background:none;border:0;color:#fff;font-size:11px">
+      خروج
+    </button>
+  </div>
+</header>
+
+
+<div class="container">
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<section id="dashboard" class="section active">
+
+  <div class="page-title">
+    <h2>🏠 داشبورد</h2>
+    <p>مدیریت اسناد و معاملات ارز پلاس</p>
+  </div>
+
+  <div class="cards">
+
+    <div class="stat">
+      <div class="icon">🧾</div>
+      <strong id="statInvoices">0</strong>
+      <span>تعداد اسناد</span>
+    </div>
+
+    <div class="stat">
+      <div class="icon">👥</div>
+      <strong id="statCustomers">0</strong>
+      <span>مشتریان</span>
+    </div>
+
+    <div class="stat">
+      <div class="icon">💰</div>
+      <strong id="statSales">0</strong>
+      <span>مجموع معاملات</span>
+    </div>
+
+    <div class="stat">
+      <div class="icon">📦</div>
+      <strong id="statInventory">0</strong>
+      <span>اقلام موجودی</span>
+    </div>
+
+  </div>
+
+
+  <div class="menu">
+
+    <button class="menu-btn" onclick="showSection('invoice')">
+      <div>🧾</div>
+      سند جدید
+    </button>
+
+    <button class="menu-btn" onclick="showSection('invoices')">
+      <div>📂</div>
+      اسناد و فاکتورها
+    </button>
+
+    <button class="menu-btn" onclick="showSection('customers')">
+      <div>👥</div>
+      مشتریان
+    </button>
+
+    <button class="menu-btn" onclick="showSection('accounts')">
+      <div>💰</div>
+      حساب و تسویه
+    </button>
+
+    <button class="menu-btn" onclick="showSection('inventory')">
+      <div>📦</div>
+      موجودی
+    </button>
+
+    <button class="menu-btn" onclick="showSection('reports')">
+      <div>📊</div>
+      گزارشات
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- ================= NEW INVOICE ================= -->
+
+<section id="invoice" class="section">
+
+  <div class="page-title">
+    <h2>🧾 سند جدید</h2>
+    <p>ثبت خرید یا فروش</p>
+  </div>
+
+  <div class="panel">
+
+    <div class="grid">
+
+      <div class="field">
+        <label>نوع معامله</label>
+        <select id="tradeType">
+          <option value="فروش">فروش</option>
+          <option value="خرید">خرید</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>نوع کالا</label>
+        <select id="product">
+          <option>طلای ۱۸ عیار</option>
+          <option>طلای متفرقه</option>
+          <option>آبشده</option>
+          <option>نقره</option>
+          <option>دلار</option>
+          <option>یورو</option>
+          <option>لیر</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>نام مشتری</label>
+        <input id="customerName" placeholder="نام و نام خانوادگی">
+      </div>
+
+      <div class="field">
+        <label>شماره تماس</label>
+        <input id="customerPhone" placeholder="شماره موبایل">
+      </div>
+
+      <div class="field">
+        <label>مقدار / وزن</label>
+        <input id="quantity" type="number" step="0.001" placeholder="مثلاً 2.350">
+      </div>
+
+      <div class="field">
+        <label>قیمت واحد</label>
+        <input id="unitPrice" type="number" placeholder="قیمت">
+      </div>
+
+      <div class="field">
+        <label>اجرت / اختلاف</label>
+        <input id="fee" type="number" value="0">
+      </div>
+
+      <div class="field">
+        <label>وضعیت پرداخت</label>
+        <select id="paymentStatus">
+          <option>تسویه کامل</option>
+          <option>بخشی پرداخت شده</option>
+          <option>تسویه نشده</option>
+        </select>
+      </div>
+
+      <div class="field full">
+        <label>توضیحات</label>
+        <textarea id="description"
+          placeholder="توضیحات معامله..."></textarea>
+      </div>
+
+    </div>
+
+    <div class="form-buttons">
+      <button class="btn btn-primary" onclick="saveInvoice()">
+        ثبت سند
+      </button>
+
+      <button class="btn btn-light" onclick="showSection('dashboard')">
+        انصراف
+      </button>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= INVOICES ================= -->
+
+<section id="invoices" class="section">
+
+  <div class="page-title">
+    <h2>📂 اسناد و فاکتورها</h2>
+    <p>تمام اسناد ثبت‌شده</p>
+  </div>
+
+  <div class="panel">
+
+    <input class="search"
+      placeholder="🔍 جست‌وجو در اسناد..."
+      oninput="searchInvoices(this.value)">
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>شماره</th>
+            <th>مشتری</th>
+            <th>نوع</th>
+            <th>کالا</th>
+            <th>مقدار</th>
+            <th>مبلغ</th>
+            <th>ثبت‌کننده</th>
+            <th>عملیات</th>
+          </tr>
+        </thead>
+
+        <tbody id="invoiceTable"></tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= CUSTOMERS ================= -->
+
+<section id="customers" class="section">
+
+  <div class="page-title">
+    <h2>👥 مشتریان</h2>
+    <p>پرونده مشتریان</p>
+  </div>
+
+  <div class="panel">
+
+    <div class="grid">
+
+      <div class="field">
+        <label>نام مشتری</label>
+        <input id="newCustomerName">
+      </div>
+
+      <div class="field">
+        <label>شماره تماس</label>
+        <input id="newCustomerPhone">
+      </div>
+
+    </div>
+
+    <button class="btn btn-primary"
+      onclick="addCustomer()">
+      افزودن مشتری
+    </button>
+
+  </div>
+
+  <div class="panel">
+
+    <input class="search"
+      placeholder="🔍 جست‌وجوی مشتری..."
+      oninput="searchCustomers(this.value)">
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>نام</th>
+            <th>شماره تماس</th>
+            <th>تعداد معاملات</th>
+            <th>عملیات</th>
+          </tr>
+        </thead>
+
+        <tbody id="customerTable"></tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= ACCOUNTS ================= -->
+
+<section id="accounts" class="section">
+
+  <div class="page-title">
+    <h2>💰 حساب و تسویه</h2>
+    <p>پیگیری پرداخت‌ها و مانده‌ها</p>
+  </div>
+
+  <div class="panel">
+
+    <div class="grid">
+
+      <div class="field">
+        <label>نام مشتری</label>
+        <input id="accountCustomer">
+      </div>
+
+      <div class="field">
+        <label>مبلغ کل</label>
+        <input id="accountTotal" type="number">
+      </div>
+
+      <div class="field">
+        <label>پرداخت شده</label>
+        <input id="accountPaid" type="number">
+      </div>
+
+    </div>
+
+    <button class="btn btn-primary"
+      onclick="calculateAccount()">
+      محاسبه مانده
+    </button>
+
+    <div id="accountResult"
+      style="margin-top:15px;font-weight:bold"></div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= INVENTORY ================= -->
+
+<section id="inventory" class="section">
+
+  <div class="page-title">
+    <h2>📦 موجودی</h2>
+    <p>مدیریت موجودی ارز و فلزات</p>
+  </div>
+
+  <div class="panel">
+
+    <div class="grid">
+
+      <div class="field">
+        <label>نوع موجودی</label>
+        <select id="invProduct">
+          <option>طلای ۱۸ عیار</option>
+          <option>طلای متفرقه</option>
+          <option>آبشده</option>
+          <option>نقره</option>
+          <option>دلار</option>
+          <option>یورو</option>
+          <option>لیر</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>مقدار</label>
+        <input id="invQuantity" type="number" step="0.001">
+      </div>
+
+    </div>
+
+    <button class="btn btn-primary"
+      onclick="addInventory()">
+      ثبت موجودی
+    </button>
+
+  </div>
+
+  <div class="panel">
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>کالا</th>
+            <th>مقدار</th>
+            <th>آخرین ثبت</th>
+          </tr>
+        </thead>
+
+        <tbody id="inventoryTable"></tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= REPORTS ================= -->
+
+<section id="reports" class="section">
+
+  <div class="page-title">
+    <h2>📊 گزارشات</h2>
+    <p>گزارش کلی فعالیت</p>
+  </div>
+
+  <div class="cards">
+
+    <div class="stat">
+      <div class="icon">🧾</div>
+      <strong id="reportInvoices">0</strong>
+      <span>کل اسناد</span>
+    </div>
+
+    <div class="stat">
+      <div class="icon">👥</div>
+      <strong id="reportCustomers">0</strong>
+      <span>کل مشتریان</span>
+    </div>
+
+    <div class="stat">
+      <div class="icon">💰</div>
+      <strong id="reportTotal">0</strong>
+      <span>مجموع معاملات</span>
+    </div>
+
+  </div>
+
+  <div class="panel">
+
+    <h3>آخرین فعالیت‌ها</h3>
+
+    <div id="activityList"></div>
+
+  </div>
+
+</section>
+
+
+</div>
+</div>
+
+
 <script>
 
-  // =========================
-  // SUPABASE
-  // =========================
+/* =========================
+   DATA
+========================= */
 
-  const SUPABASE_URL = "اینجا Project URL را قرار بده";
+let currentUser = null;
 
-  const SUPABASE_KEY = "اینجا Publishable key یا anon key را قرار بده";
+let invoices =
+  JSON.parse(localStorage.getItem("arzplus_invoices") || "[]");
 
-  const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
+let customers =
+  JSON.parse(localStorage.getItem("arzplus_customers") || "[]");
+
+let inventory =
+  JSON.parse(localStorage.getItem("arzplus_inventory") || "[]");
+
+
+/* =========================
+   LOGIN
+========================= */
+
+function login(){
+
+  const user =
+    document.getElementById("loginUser").value.trim();
+
+  const pass =
+    document.getElementById("loginPass").value;
+
+  /*
+    موقتاً برای تست ظاهر برنامه:
+    علیرضا / 1234
+    مسعود / 5678
+
+    بعداً این قسمت را با Supabase
+    جایگزین می‌کنیم.
+  */
+
+  if(
+    (user==="علیرضا" && pass==="1234") ||
+    (user==="مسعود" && pass==="5678")
+  ){
+
+    currentUser=user;
+
+    localStorage.setItem(
+      "arzplus_current_user",
+      user
+    );
+
+    document.getElementById("login").classList.add("hidden");
+
+    document.getElementById("app").classList.remove("hidden");
+
+    document.getElementById("currentUser").innerText =
+      user;
+
+    refreshAll();
+
+  }else{
+
+    document.getElementById("loginError").innerText =
+      "نام کاربری یا رمز عبور اشتباه است.";
+
+  }
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logout(){
+
+  localStorage.removeItem("arzplus_current_user");
+
+  currentUser=null;
+
+  document.getElementById("app").classList.add("hidden");
+
+  document.getElementById("login").classList.remove("hidden");
+
+  document.getElementById("loginUser").value="";
+  document.getElementById("loginPass").value="";
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+function showSection(id){
+
+  document.querySelectorAll(".section")
+    .forEach(s=>s.classList.remove("active"));
+
+  document.getElementById(id)
+    .classList.add("active");
+
+  refreshAll();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+
+/* =========================
+   SAVE INVOICE
+========================= */
+
+function saveInvoice(){
+
+  const customer =
+    document.getElementById("customerName").value.trim();
+
+  const phone =
+    document.getElementById("customerPhone").value.trim();
+
+  const trade =
+    document.getElementById("tradeType").value;
+
+  const product =
+    document.getElementById("product").value;
+
+  const quantity =
+    Number(document.getElementById("quantity").value || 0);
+
+  const unitPrice =
+    Number(document.getElementById("unitPrice").value || 0);
+
+  const fee =
+    Number(document.getElementById("fee").value || 0);
+
+  const payment =
+    document.getElementById("paymentStatus").value;
+
+  const description =
+    document.getElementById("description").value.trim();
+
+  if(!customer){
+    alert("نام مشتری را وارد کنید.");
+    return;
+  }
+
+  if(quantity<=0){
+    alert("مقدار یا وزن را وارد کنید.");
+    return;
+  }
+
+  const total =
+    (quantity * unitPrice) + fee;
+
+  const number =
+    "AP-" +
+    new Date().getFullYear() +
+    "-" +
+    String(invoices.length+1).padStart(5,"0");
+
+  const invoice={
+
+    id:Date.now(),
+
+    number,
+
+    customer,
+
+    phone,
+
+    trade,
+
+    product,
+
+    quantity,
+
+    unitPrice,
+
+    fee,
+
+    total,
+
+    payment,
+
+    description,
+
+    user:currentUser,
+
+    date:new Date().toLocaleString("fa-IR")
+
+  };
+
+  invoices.unshift(invoice);
+
+  saveData();
+
+  alert(
+    "سند با موفقیت ثبت شد.\n\nشماره سند: " +
+    number
   );
 
+  clearInvoiceForm();
 
-  // =========================
-  // LOGIN
-  // =========================
+  showSection("invoices");
+}
 
-  async function login() {
 
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
+/* =========================
+   CLEAR FORM
+========================= */
 
-    const error = document.getElementById("error");
-    const loading = document.getElementById("loading");
+function clearInvoiceForm(){
 
-    error.innerText = "";
+  [
+    "customerName",
+    "customerPhone",
+    "quantity",
+    "unitPrice",
+    "fee",
+    "description"
+  ].forEach(id=>{
+    document.getElementById(id).value="";
+  });
 
-    if (!email || !password) {
-      error.innerText = "ایمیل و رمز عبور را وارد کنید.";
-      return;
-    }
+  document.getElementById("fee").value=0;
+}
 
-    loading.style.display = "block";
 
-    const { data, error: loginError } =
-      await supabaseClient.auth.signInWithPassword({
-        email: email,
-        password: password
-      });
+/* =========================
+   INVOICE TABLE
+========================= */
 
-    loading.style.display = "none";
+function renderInvoices(list=invoices){
 
-    if (loginError) {
-      error.innerText = "ایمیل یا رمز عبور اشتباه است.";
-      return;
-    }
+  const table =
+    document.getElementById("invoiceTable");
 
-    showDashboard(data.user);
+  table.innerHTML="";
+
+  if(!list.length){
+
+    table.innerHTML=
+      `<tr><td colspan="8"
+      style="text-align:center">
+      سندی ثبت نشده است
+      </td></tr>`;
+
+    return;
   }
 
+  list.forEach(i=>{
 
-  // =========================
-  // SHOW DASHBOARD
-  // =========================
+    const tr=document.createElement("tr");
 
-  function showDashboard(user) {
+    tr.innerHTML=`
 
-    document.getElementById("loginPage").style.display = "none";
+      <td>${i.number}</td>
 
-    document.getElementById("dashboard").style.display = "block";
+      <td>${i.customer}</td>
 
-    document.getElementById("userEmail").innerText =
-      user.email;
-  }
+      <td>${i.trade}</td>
 
+      <td>${i.product}</td>
 
-  // =========================
-  // LOGOUT
-  // =========================
+      <td>${i.quantity}</td>
 
-  async function logout() {
+      <td>${formatMoney(i.total)}</td>
 
-    await supabaseClient.auth.signOut();
+      <td>${i.user}</td>
 
-    document.getElementById("dashboard").style.display = "none";
+      <td>
+        <button
+          class="btn btn-light"
+          onclick="viewInvoice(${i.id})">
+          مشاهده
+        </button>
+      </td>
 
-    document.getElementById("loginPage").style.display = "block";
+    `;
 
-    document.getElementById("email").value = "";
-    document.getElementById("password").value = "";
-  }
+    table.appendChild(tr);
 
-
-  // =========================
-  // CHECK EXISTING SESSION
-  // =========================
-
-  async function checkSession() {
-
-    const { data } =
-      await supabaseClient.auth.getSession();
-
-    if (data.session) {
-      showDashboard(data.session.user);
-    }
-  }
+  });
+}
 
 
-  // =========================
-  // TEMPORARY BUTTONS
-  // =========================
+/* =========================
+   VIEW INVOICE
+========================= */
 
-  function comingSoon(name) {
+function viewInvoice(id){
 
-    alert(
-      name + "\n\nاین بخش در مرحله بعد فعال می‌شود."
+  const i =
+    invoices.find(x=>x.id===id);
+
+  if(!i)return;
+
+  const text=`
+
+شماره سند: ${i.number}
+
+مشتری: ${i.customer}
+
+شماره تماس: ${i.phone || "-"}
+
+نوع معامله: ${i.trade}
+
+کالا: ${i.product}
+
+مقدار: ${i.quantity}
+
+قیمت واحد: ${formatMoney(i.unitPrice)}
+
+اجرت/اختلاف: ${formatMoney(i.fee)}
+
+مبلغ نهایی: ${formatMoney(i.total)}
+
+وضعیت پرداخت: ${i.payment}
+
+ثبت‌کننده: ${i.user}
+
+تاریخ: ${i.date}
+
+توضیحات: ${i.description || "-"}
+
+  `;
+
+  alert(text);
+}
+
+
+/* =========================
+   SEARCH INVOICES
+========================= */
+
+function searchInvoices(q){
+
+  q=q.trim().toLowerCase();
+
+  const result=
+    invoices.filter(i=>
+      Object.values(i)
+      .join(" ")
+      .toLowerCase()
+      .includes(q)
     );
+
+  renderInvoices(result);
+}
+
+
+/* =========================
+   CUSTOMERS
+========================= */
+
+function addCustomer(){
+
+  const name=
+    document.getElementById("newCustomerName").value.trim();
+
+  const phone=
+    document.getElementById("newCustomerPhone").value.trim();
+
+  if(!name){
+    alert("نام مشتری را وارد کنید.");
+    return;
   }
 
+  customers.push({
 
-  checkSession();
+    id:Date.now(),
 
-</script>
+    name,
 
-</body>
-</html>
+    phone,
+
+    date:new Date().toLocaleString("fa-IR"),
+
+    user:currentUser
+
+  });
+
+  saveData();
+
+  document.getElementById("newCustomerName").value="";
+  document.getElementById("newCustomerPhone").value="";
+
+  renderCustomers();
+
+  alert("مشتری ثبت شد.");
+}
+
+
+/* =========================
+   CUSTOMER TABLE
+========================= */
+
+function renderCustomers(list=customers){
+
+  const table=
+    document.getElementById("customerTable");
+
+  table.innerHTML="";
+
+  list.forEach(c=>{
+
+    const count=
+      invoices.filter(i=>
+        i.customer===c.name
+      ).length;
+
+    const tr=document.createElement("tr");
+
+    tr.innerHTML=`
+
+      <td>${c.name}</td>
+
+      <td>${c.phone || "-"}</td>
+
+      <td>${count}</td>
+
+      <td>
+        <button
+          class="btn btn-light"
+          onclick="customerDetails('${escapeText(c.name)}')">
+          پرونده
+        </button>
+      </td>
+
+    `;
+
+    table.appendChild(tr);
+
+  });
+
+}
+
+
+/* =========================
+   CUSTOMER SEARCH
+========================= */
+
+function searchCustomers(q){
+
+  q=q.toLowerCase();
+
+  renderCustomers(
+    customers.filter(c=>
+      (c.name+" "+c.phone)
+      .toLowerCase()
+      .includes(q)
+    )
+  );
+
+}
+
+
+/* =========================
+   CUSTOMER DETAILS
+========================= */
+
+function customerDetails(name){
+
+  const list=
+    invoices.filter
